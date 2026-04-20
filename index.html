@@ -2264,6 +2264,8 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
         if (!btn) return;
         btn.addEventListener('click', () => {
           store.activeFamily = btn.dataset.family;
+          // Reset le scale selon la famille
+          store.previewScale = btn.dataset.family === 'WEB' ? '0.5' : '0.25';
           // If current active format is not in this family, switch to first of this family
           const currentFormat = FORMATS[store.activeFormatId];
           if (!currentFormat || currentFormat.family !== store.activeFamily) {
@@ -2573,10 +2575,9 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
     }
 
     function getEffectivePreviewScale(format) {
-      if (!store.previewScale || store.previewScale === '0.25') {
-        return String(format.previewScale || 0.25);
-      }
-      return store.previewScale;
+      if (store.previewScale) return store.previewScale;
+      // Par défaut : 25% pour APP, 50% pour WEB
+      return format.family === 'WEB' ? '0.5' : '0.25';
     }
 
     function syncHeaderFields() {
@@ -2610,8 +2611,12 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
 
       els.canvas.width = bgImage.width;
       els.canvas.height = bgImage.height;
-      els.canvas.style.transform = `scale(${getEffectivePreviewScale(format) || format.previewScale || 0.25})`;
-      els.canvas.style.transformOrigin = 'top center';
+      // Redimensionnement via CSS width/height — 100% = taille réelle du canvas
+      const scale = parseFloat(getEffectivePreviewScale(format));
+      els.canvas.style.width  = Math.round(els.canvas.width  * scale) + 'px';
+      els.canvas.style.height = Math.round(els.canvas.height * scale) + 'px';
+      els.canvas.style.transform = '';
+      els.canvas.style.transformOrigin = '';
 
       const ctx = els.canvas.getContext('2d');
       const selected728DateRef = get728DateReference(formatState.fields.travelDate);
