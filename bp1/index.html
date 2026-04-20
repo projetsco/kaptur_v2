@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Format Bon plan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #canvas-container {
+      position: relative;
+      margin: 20px 0;
+    }
+    canvas {
+      max-width: 100%;
+      height: auto;
+    }
+    input[type="file"], textarea {
+      margin-bottom: 10px;
+      display: block;
+      width: 100%;
+      max-width: 400px;
+    }
+    textarea {
+      resize: none;
+    }
+    #customText {
+      height: 40px;
+    }
+    #customDesc {
+      height: 60px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Format BP1</h1>
+
+  <label>Télécharger une image personnalisée :</label>
+  <input type="file" id="uploadProfile" accept="image/*">
+
+  <label>Titre (max 60 caractères / 2 lignes) :</label>
+  <textarea id="customText" maxlength="120" rows="2" placeholder="ex: -20% sur le pass interrail&#10;Profitez-en dès maintenant"></textarea>
+
+  <label>Description (max 65 caractères par ligne / 3 lignes) :</label>
+  <textarea id="customDesc" maxlength="195" rows="3" placeholder="ex: Offre valable jusqu'au 30 juin&#10;Uniquement pour les -27 ans"></textarea>
+
+  <div id="canvas-container">
+    <canvas id="canvas"></canvas>
+  </div>
+
+
+  <script>
+    let pictoImg = new Image();
+    pictoImg.src = 'picto.png';
+
+    const profileInput = document.getElementById('uploadProfile');
+    const customTextInput = document.getElementById('customText');
+    const customDescInput = document.getElementById('customDesc');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const saveBtn = document.getElementById('saveBtn');
+
+    const scale = 1;
+    let profileImg = new Image();
+    let resizedProfileImg = null;
+    let backgroundImg = new Image();
+
+    backgroundImg.src = 'canvas.jpg';
+
+    backgroundImg.onload = function () {
+      canvas.width = backgroundImg.width * scale;
+      canvas.height = backgroundImg.height * scale;
+      drawCanvas();
+    };
+
+    profileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          profileImg.onload = function () {
+            const offscreen = document.createElement('canvas');
+            offscreen.width = 656;
+            offscreen.height = 280;
+            const offCtx = offscreen.getContext('2d');
+            offCtx.drawImage(profileImg, 0, 0, 656, 280);
+            resizedProfileImg = new Image();
+            resizedProfileImg.onload = drawCanvas;
+            resizedProfileImg.src = offscreen.toDataURL();
+          };
+          profileImg.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    customTextInput.addEventListener('input', drawCanvas);
+    customDescInput.addEventListener('input', drawCanvas);
+
+    function drawCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);
+
+      const title = customTextInput.value.trim();
+      const titleLines = title.split(/\r?\n/).slice(0, 2);
+      const desc = customDescInput.value.trim();
+      const descLines = desc.split(/\r?\n/).slice(0, 3);
+
+      const fontSize = 15;
+      const fontSizedesc = 14;
+      const textX = 36* scale;
+
+      // Position image
+      const bannerX = 18 * scale;
+      const bannerY = 147 * scale;
+      const bannerW = 656 * scale * 0.668;
+      const bannerH = 280 * scale * 0.668;
+      const radius = 18 * scale;
+
+      if (resizedProfileImg) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(bannerX + radius, bannerY);
+        ctx.lineTo(bannerX + bannerW - radius, bannerY);
+        ctx.quadraticCurveTo(bannerX + bannerW, bannerY, bannerX + bannerW, bannerY + radius);
+        ctx.lineTo(bannerX + bannerW, bannerY + bannerH);
+        ctx.lineTo(bannerX, bannerY + bannerH);
+        ctx.lineTo(bannerX, bannerY + radius);
+        ctx.quadraticCurveTo(bannerX, bannerY, bannerX + radius, bannerY);
+        ctx.closePath();
+        ctx.clip();
+        ctx.drawImage(resizedProfileImg, bannerX, bannerY, bannerW, bannerH);
+        ctx.restore();
+
+        // Picto (coin haut droit)
+        const pictoSize = 13;
+        const pictoX = bannerX + bannerW - pictoSize;
+        const pictoY = bannerY;
+        const pictoRadius = 6;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(pictoX, pictoY);
+        ctx.lineTo(pictoX + pictoSize - pictoRadius, pictoY);
+        ctx.quadraticCurveTo(pictoX + pictoSize, pictoY, pictoX + pictoSize, pictoY + pictoRadius);
+        ctx.lineTo(pictoX + pictoSize, pictoY + pictoSize);
+        ctx.lineTo(pictoX, pictoY + pictoSize);
+        ctx.closePath();
+        ctx.clip();
+        ctx.drawImage(pictoImg, pictoX, pictoY, pictoSize, pictoSize);
+        ctx.restore();
+      }
+
+      // Titre juste en dessous de l’image
+      const titleStartY = bannerY + bannerH + 28 * scale;
+      ctx.save();
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = 'white';
+      if (titleLines[0]) {
+        ctx.font = `500 ${fontSize}px 'Avenir', 'Inter', 'Helvetica Neue', sans-serif`;
+        ctx.fillText(titleLines[0], textX, titleStartY);
+      }
+      if (titleLines[1]) {
+        ctx.font = `500 ${fontSize}px 'Avenir', 'Inter', 'Helvetica Neue', sans-serif`;
+        ctx.fillText(titleLines[1], textX, titleStartY + 18 * scale);
+      }
+      ctx.restore();
+
+      // Description juste en dessous du titre
+      const descStartY = titleStartY + titleLines.length * 13 * scale + 13 * scale;
+      ctx.save();
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = 'grey';
+      for (let i = 0; i < descLines.length; i++) {
+        ctx.font = `500 ${fontSizedesc}px 'Avenir', 'Inter', 'Helvetica Neue', sans-serif`;
+        ctx.fillText(descLines[i], textX, descStartY + i * 22 * scale);
+      }
+      ctx.restore();
+    }
+
+    saveBtn.addEventListener('click', () => {
+      const dataURL = canvas.toDataURL();
+      const a = document.createElement('a');
+      a.href = dataURL;
+      a.download = 'montage_complet.png';
+      a.click();
+    });
+  </script>
+</body>
+</html>
