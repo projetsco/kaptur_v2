@@ -880,7 +880,7 @@
     const FORMATS = {
       bp1: {
         id: 'bp1',
-        label: 'BP1',
+        label: 'BP1 - Homepage',
         family: 'APP',
         exportLabel: 'APP_BP1',
         acceptedSize: { w: 656, h: 280 },
@@ -909,7 +909,7 @@
 
       bonplan: {
         id: 'bonplan',
-        label: 'BP2/3/4',
+        label: 'BP2/3/4 - Homepage',
         family: 'APP',
         exportLabel: 'APP_BP234',
         acceptedSize: { w: 300, h: 300 },
@@ -938,7 +938,7 @@
 
       native1: {
         id: 'native1',
-        label: 'Native 1',
+        label: 'Native 1 - Compte Client',
         family: 'APP',
         exportLabel: 'APP_NATIVE1',
         acceptedSize: { w: 656, h: 280 },
@@ -970,7 +970,7 @@
 
       native2: {
         id: 'native2',
-        label: 'Native 2',
+        label: 'Native 2 - Compte Client',
         family: 'APP',
         exportLabel: 'APP_NATIVE2',
         acceptedSize: { w: 656, h: 280 },
@@ -1112,7 +1112,7 @@ if (state.cta) {
 
       app300x250: {
         id: 'app300x250',
-        label: '300x250',
+        label: '300x250 - Confirmation',
         family: 'APP',
         exportLabel: 'APP_300x250',
         acceptedSize: { w: 300, h: 250 },
@@ -1232,17 +1232,24 @@ if (state.cta) {
 
 
           if (uploadedImage) {
-		const drawW = Math.round(cw * 0.75);
-const ratio = uploadedImage.naturalHeight / uploadedImage.naturalWidth;
-const drawH = Math.round(drawW * ratio);
-const drawX = (cw - drawW) / 2;
-ctx.drawImage(uploadedImage, drawX, ch - drawH - 830, drawW, drawH);        }
+            const drawW = Math.round(cw * 0.75);
+            const ratio = uploadedImage.naturalHeight / uploadedImage.naturalWidth;
+            const drawH = Math.round(drawW * ratio);
+            const drawX = (cw - drawW) / 2;
+            const drawY = ch - drawH - 830;
+            ctx.drawImage(uploadedImage, drawX, drawY, drawW, drawH);
+            if (env.pictobanImage) {
+              const pw = Math.round(drawW * 0.07);
+              const ph = Math.round(pw * (env.pictobanImage.naturalHeight / env.pictobanImage.naturalWidth));
+              ctx.drawImage(env.pictobanImage, drawX + drawW - pw, drawY, pw, ph);
+            }
+          }
         }
       },
 
       appinterstitiel: {
         id: 'appinterstitiel',
-        label: 'Interstitiel',
+        label: 'Interstitiel - Attente',
         family: 'APP',
         exportLabel: 'APP_INTERSTITIEL',
         acceptedSize: { w: 320, h: 480 },
@@ -1263,7 +1270,7 @@ ctx.drawImage(uploadedImage, drawX, ch - drawH - 830, drawW, drawH);        }
 
       format300: {
         id: 'format300',
-        label: '300x600',
+        label: '300x600 - Distribution',
         family: 'WEB',
         exportLabel: 'WEB_300x600',
         acceptedSize: { w: 300, h: 600 },
@@ -1307,7 +1314,7 @@ ctx.drawImage(uploadedImage, drawX, ch - drawH - 830, drawW, drawH);        }
 
       format728: {
         id: 'format728',
-        label: '728x90',
+        label: '728x90 - Devis',
         family: 'WEB',
         exportLabel: 'WEB_728x90',
         acceptedSize: { w: 728, h: 90 },
@@ -1352,7 +1359,7 @@ ctx.drawImage(uploadedImage, drawX, ch - drawH - 830, drawW, drawH);        }
             { x: 340, y: 338, w: 125, h: 44, selected: false },
             { x: 528, y: 338, w: 125, h: 44, selected: false },
             { x: 714, y: 338, w: 125, h: 44, selected: false },
-            { x: 898, y: 338, w: 125, h: 44, selected: true },
+            { x: 898, y: 338, w: 128, h: 44, selected: true },
             { x: 1084, y: 338, w: 125, h: 44, selected: false },
             { x: 1268, y: 338, w: 125, h: 44, selected: false },
             { x: 1454, y: 338, w: 125, h: 44, selected: false }
@@ -1471,7 +1478,7 @@ ctx.drawImage(uploadedImage, drawX, ch - drawH - 830, drawW, drawH);        }
 
       format300x250web: {
         id: 'format300x250web',
-        label: '300x250 WEB',
+        label: '300x250- Article',
         family: 'WEB',
         exportLabel: 'WEB_300x250',
         acceptedSize: { w: 300, h: 250 },
@@ -1515,7 +1522,7 @@ ctx.drawImage(uploadedImage, drawX, ch - drawH - 830, drawW, drawH);        }
 
       webnativecodepromo: {
         id: 'webnativecodepromo',
-        label: 'Web Native Code Promo',
+        label: '302x268 - Code Promo',
         family: 'WEB',
         exportLabel: 'WEB_NATIVE_CODEPROMO',
         acceptedSize: { w: 302, h: 268 },
@@ -1648,7 +1655,7 @@ ctx.drawImage(uploadedImage, drawX, ch - drawH - 830, drawW, drawH);        }
 
       webinterstitiel: {
         id: 'webinterstitiel',
-        label: 'Interstitiel',
+        label: 'Interstitiel - Attente',
         family: 'WEB',
         exportLabel: 'WEB_INTERSTITIEL',
         acceptedSize: { w: 1024, h: 580 },
