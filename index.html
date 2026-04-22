@@ -1538,8 +1538,8 @@ ctx.drawImage(uploadedImage, drawX, ch - drawH - 830, drawW, drawH);        }
           if (bgImage) ctx.drawImage(bgImage, 0, 0, cw, ch);
 
           // ── Image à gauche (carré arrondi ~40% de la largeur) ──
-          const imgPad  = Math.round(cw * 0.343);
-          const imgW    = Math.round(cw * 0.139);
+          const imgPad  = Math.round(cw * 0.325);
+          const imgW    = Math.round(cw * 0.157);
           // Ratio naturel de l'image uploadée pour ne pas déformer
           const imgRatio = uploadedImage ? (uploadedImage.naturalHeight / uploadedImage.naturalWidth) : 1;
           const imgH    = Math.round(imgW * imgRatio);
