@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>Kaptur — Outil de capture</title>
+  <title>Kaptur V2 — modular</title>
   <style>
     :root {
       --brand: #0C1F66;
@@ -1359,7 +1359,7 @@ if (state.cta) {
             { x: 340, y: 338, w: 125, h: 44, selected: false },
             { x: 528, y: 338, w: 125, h: 44, selected: false },
             { x: 714, y: 338, w: 125, h: 44, selected: false },
-            { x: 898, y: 338, w: 128, h: 44, selected: true },
+            { x: 898, y: 338, w: 125, h: 44, selected: true },
             { x: 1084, y: 338, w: 125, h: 44, selected: false },
             { x: 1268, y: 338, w: 125, h: 44, selected: false },
             { x: 1454, y: 338, w: 125, h: 44, selected: false }
@@ -1716,6 +1716,15 @@ if (state.cta) {
     }
 
     function applyRuntimeDefaults() {
+      // ── native2 — sélection aléatoire au premier chargement ──
+      const native2State = store.formats.native2;
+      if (native2State) {
+        if (!native2State.fields) native2State.fields = {};
+        if (!native2State.fields.backgroundVariant) {
+          const n = Math.floor(Math.random() * 3) + 1;
+          native2State.fields.backgroundVariant = `native2/canvas${n}.png`;
+        }
+      }
       // ── format300x250web — sélection aléatoire au premier chargement ──
       const format300x250webState = store.formats.format300x250web;
       if (format300x250webState) {
@@ -2733,7 +2742,7 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       container.innerHTML = '';
 
       // ── Bouton "Canvas aléatoire" (format970lt et format300x250web) ──
-      if (format.id === 'format970lt' || format.id === 'format300x250web') {
+      if (format.id === 'format970lt' || format.id === 'format300x250web' || format.id === 'native2') {
         const randBtn = document.createElement('button');
         randBtn.className = 'btn-form';
         randBtn.innerHTML = '🔀 Nouveau canvas aléatoire';
@@ -2742,6 +2751,9 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
           if (format.id === 'format300x250web') {
             const n = Math.floor(Math.random() * 5) + 1;
             newVariant = `300x250_web/canvas_${n}.png`;
+          } else if (format.id === 'native2') {
+            const n = Math.floor(Math.random() * 3) + 1;
+            newVariant = `native2/canvas${n}.png`;
           } else {
             const ltPool2 = [1,2,3,4,5,7,8];
             newVariant = `970x250_lt/canvas_${ltPool2[Math.floor(Math.random()*ltPool2.length)]}.png`;
