@@ -1127,7 +1127,14 @@ if (state.cta) {
             const drawW = Math.round(canvas.width * 0.70);
             const ratio = uploadedImage.naturalHeight / uploadedImage.naturalWidth;
             const drawH = Math.round(drawW * ratio);
-            ctx.drawImage(uploadedImage, (canvas.width - drawW) / 2, canvas.height - drawH - 1855, drawW, drawH);
+            const drawX300 = (canvas.width - drawW) / 2;
+            const drawY300 = canvas.height - drawH - 1855;
+            ctx.drawImage(uploadedImage, drawX300, drawY300, drawW, drawH);
+            if (env.pictobanImage) {
+              const pw = Math.round(drawW * 0.07);
+              const ph = Math.round(pw * (env.pictobanImage.naturalHeight / env.pictobanImage.naturalWidth));
+              ctx.drawImage(env.pictobanImage, drawX300 + drawW - pw, drawY300, pw, ph);
+            }
           }
         }
       },
@@ -1148,8 +1155,43 @@ if (state.cta) {
       if (uploadedImage) {
   const drawW = 950; // ~90% de 1282px
   const drawH = Math.round(950 * (100 / 320)); // ~361px, ratio conservé
-  ctx.drawImage(uploadedImage, (canvas.width - drawW) / 2, canvas.height - drawH - 395, drawW, drawH);
+  const drawX320hp = (canvas.width - drawW) / 2;
+  const drawY320hp = canvas.height - drawH - 395;
+  ctx.drawImage(uploadedImage, drawX320hp, drawY320hp, drawW, drawH);
+  if (env.pictobanImage) {
+    const pw = Math.round(drawW * 0.07);
+    const ph = Math.round(pw * (env.pictobanImage.naturalHeight / env.pictobanImage.naturalWidth));
+    ctx.drawImage(env.pictobanImage, drawX320hp + drawW - pw, drawY320hp, pw, ph);
+  }
 }
+        }
+      },
+
+      app320mesbillets: {
+        id: 'app320mesbillets',
+        label: '320x100 – Mes billets',
+        family: 'APP',
+        exportLabel: 'APP_320x100_MESBILLETS',
+        acceptedSize: { w: 320, h: 100 },
+        backgroundVariants: ['320x100_mesbillets/canvas_1.png'],
+        previewScale: 0.75,
+        fields: [],
+        draw(ctx, state, env) {
+          const { canvas, bgImage, uploadedImage } = env;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          if (bgImage) ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+          if (uploadedImage) {
+            const drawW = 950;
+            const drawH = Math.round(950 * (100 / 320));
+            const drawX320mb = (canvas.width - drawW) / 2;
+            const drawY320mb = canvas.height - drawH - 1100;
+            ctx.drawImage(uploadedImage, drawX320mb, drawY320mb, drawW, drawH);
+            if (env.pictobanImage) {
+              const pw = Math.round(drawW * 0.07);
+              const ph = Math.round(pw * (env.pictobanImage.naturalHeight / env.pictobanImage.naturalWidth));
+              ctx.drawImage(env.pictobanImage, drawX320mb + drawW - pw, drawY320mb, pw, ph);
+            }
+          }
         }
       },
 
@@ -1330,7 +1372,14 @@ ctx.drawImage(uploadedImage, drawX, ch - drawH - 830, drawW, drawH);        }
           });
 
           if (uploadedImage) {
-            ctx.drawImage(uploadedImage, (canvas.width - 728) / 2, canvas.height - 90 - 53, 728, 90);
+            const drawX728 = (canvas.width - 728) / 2;
+            const drawY728 = canvas.height - 90 - 53;
+            ctx.drawImage(uploadedImage, drawX728, drawY728, 728, 90);
+            if (env.pictobanImage) {
+              const pw = Math.round(728 * 0.05);
+              const ph = Math.round(pw * (env.pictobanImage.naturalHeight / env.pictobanImage.naturalWidth));
+              ctx.drawImage(env.pictobanImage, drawX728 + 728 - pw, drawY728, pw, ph);
+            }
           }
         }
       },
@@ -1361,7 +1410,14 @@ ctx.drawImage(uploadedImage, drawX, ch - drawH - 830, drawW, drawH);        }
           }
 
           if (uploadedImage) {
-            ctx.drawImage(uploadedImage, (canvas.width - 970) / 2, canvas.height - 250 - 29, 970, 250);
+            const drawX970c = (canvas.width - 970) / 2;
+            const drawY970c = canvas.height - 250 - 29;
+            ctx.drawImage(uploadedImage, drawX970c, drawY970c, 970, 250);
+            if (env.pictobanImage) {
+              const pw = Math.round(970 * 0.04);
+              const ph = Math.round(pw * (env.pictobanImage.naturalHeight / env.pictobanImage.naturalWidth));
+              ctx.drawImage(env.pictobanImage, drawX970c + 970 - pw, drawY970c, pw, ph);
+            }
           }
         }
       },
@@ -1401,7 +1457,14 @@ ctx.drawImage(uploadedImage, drawX, ch - drawH - 830, drawW, drawH);        }
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           if (bgImage) ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
           if (uploadedImage) {
-            ctx.drawImage(uploadedImage, (canvas.width - 970) / 2, canvas.height - 270 , 970, 250);
+            const drawX970lt = (canvas.width - 970) / 2;
+            const drawY970lt = canvas.height - 270;
+            ctx.drawImage(uploadedImage, drawX970lt, drawY970lt, 970, 250);
+            if (env.pictobanImage) {
+              const pw = Math.round(970 * 0.04);
+              const ph = Math.round(pw * (env.pictobanImage.naturalHeight / env.pictobanImage.naturalWidth));
+              ctx.drawImage(env.pictobanImage, drawX970lt + 970 - pw, drawY970lt, pw, ph);
+            }
           }
         }
       },
@@ -1437,7 +1500,16 @@ ctx.drawImage(uploadedImage, drawX, ch - drawH - 830, drawW, drawH);        }
           const { canvas, bgImage, uploadedImage } = env;
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           if (bgImage) ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
-          if (uploadedImage) ctx.drawImage(uploadedImage, (canvas.width - 300) / 2, (canvas.height - 250) - 100, 300, 250);
+          if (uploadedImage) {
+            const drawX300w = (canvas.width - 300) / 2;
+            const drawY300w = (canvas.height - 250) - 100;
+            ctx.drawImage(uploadedImage, drawX300w, drawY300w, 300, 250);
+            if (env.pictobanImage) {
+              const pw = Math.round(300 * 0.08);
+              const ph = Math.round(pw * (env.pictobanImage.naturalHeight / env.pictobanImage.naturalWidth));
+              ctx.drawImage(env.pictobanImage, drawX300w + 300 - pw, drawY300w, pw, ph);
+            }
+          }
         }
       },
 
