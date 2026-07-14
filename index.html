@@ -1381,7 +1381,6 @@
       position: sticky;
       top: 20px;
       align-self: start;
-      max-height: calc(100vh - 40px);
     }#panel-kaptur .form-card {
       background: white;
       border: 1px solid var(--border);
@@ -1396,7 +1395,6 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      min-height: 0;
     }#panel-kaptur .preview-topbar {
       display: flex;
       align-items: center;
@@ -1420,7 +1418,6 @@
       justify-content: center;
       padding: 32px;
       min-height: 420px;
-      flex: 1;
       background: #1a1f2e;
       background-image:
         radial-gradient(circle, rgba(255,255,255,.04) 1px, transparent 1px);
@@ -1428,6 +1425,9 @@
       overflow: auto;
     }#panel-kaptur .canvas-shell::-webkit-scrollbar { width: 6px; height: 6px; }#panel-kaptur .canvas-shell::-webkit-scrollbar-track { background: rgba(255,255,255,.03); }#panel-kaptur .canvas-shell::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 999px; }#panel-kaptur .canvas-shell canvas {
       display: block;
+      flex-shrink: 0;
+      max-width: none;
+      max-height: none;
       background: white;
       box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06);
       border-radius: 4px;
