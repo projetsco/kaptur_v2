@@ -1987,7 +1987,6 @@
     </main>
   </section>
 
-<dialog id="kaptur-map-dialog" class="adops-dialog" aria-labelledby="kaptur-map-title"><form id="kaptur-map-form"><h2 id="kaptur-map-title">Choisir les emplacements Kaptur</h2><p>Chaque fichier est affecté à un emplacement. Les formats proposés acceptent ses dimensions pour la capture.</p><div id="kaptur-map-list"></div><label class="map-replace"><input type="checkbox" id="kaptur-map-replace"> Remplacer les visuels des emplacements déjà renseignés</label><p id="kaptur-map-error" class="error-msg" role="alert"></p><div class="adops-dialog-actions"><button type="submit" class="btn primary" id="kaptur-map-apply">Importer la sélection</button><button type="button" class="btn" id="kaptur-map-cancel">Annuler</button></div></form></dialog>
 <dialog id="html-link-dialog" aria-labelledby="html-link-title" style="margin:auto;padding:24px;border:1px solid #CBD2DE;border-radius:14px;width:min(460px,90vw)">
 <form id="html-link-form"><h2 id="html-link-title" style="margin-bottom:16px">Ajouter ou modifier un lien</h2>
 <label for="html-link-url">Adresse du lien</label><input id="html-link-url" type="text" style="width:100%;margin:10px 0;padding:10px" placeholder="https://exemple.fr" autocomplete="off">
@@ -2043,11 +2042,11 @@
       <button class="btn btn-primary" id="exportAllBtn" style="width:100%;background:var(--accent);color:white;">Exporter tous les formats utilisés</button>
       <button class="btn btn-secondary" id="resetSessionBtn" style="width:100%;margin-top:6px;margin-bottom:14px;">Réinitialiser la session</button>
 
-      <div class="kaptur-backup"><p id="kaptur-save-status" role="status">Chargement de la session…</p><div class="backup-actions"><button type="button" class="btn btn-secondary" id="kaptur-export-session">Exporter la session</button><button type="button" class="btn btn-secondary" id="kaptur-import-session">Importer une session</button></div><input type="file" id="kaptur-session-file" accept=".json,application/json" hidden></div>
+      <div class="kaptur-backup"><p id="kaptur-save-status" role="status">Chargement de la session…</p></div>
       <p class="section-title">Import global</p>
       <div class="upload-zone" id="globalUploadZone">
         <strong>Glisse plusieurs visuels ici</strong>
-        <span>Choisissez les emplacements avant de valider l’import.</span>
+        <span>Affectation automatique selon les dimensions.</span>
         <input id="globalUploadInput" type="file" accept="image/*" multiple hidden>
       </div>
 
@@ -2120,7 +2119,6 @@
           <div class="canvas-shell">
             <p id="kaptur-preview-error" role="status"></p><canvas id="previewCanvas"></canvas>
           </div>
-          <div class="kaptur-capture-transfer"><span class="note">Renommer la capture de présentation</span><div id="kaptur-transfer"></div></div>
         </section>
     </main>
 
@@ -2319,8 +2317,8 @@
 /* V4 — transferts locaux de fichiers entre outils. */
 window.AdOpsBridge = (() => {
   const receivers = new Map();
-  const panels = { checkpub: 'panel-checkpub', resize: 'panel-resize', kaptur: 'panel-kaptur', renamer: 'panel-renamer' };
-  const labels = { checkpub: 'CheckPub', resize: 'Resize', kaptur: 'Kaptur', renamer: 'Renommage' };
+  const panels = { checkpub: 'panel-checkpub', resize: 'panel-resize', kaptur: 'panel-kaptur' };
+  const labels = { checkpub: 'CheckPub', resize: 'Resize', kaptur: 'Kaptur' };
   function message(text, error = false) {
     const region = document.getElementById('adops-transfer-status');
     region.textContent = text;
@@ -2674,7 +2672,7 @@ window.AdOpsBridge = (() => {
   $('viewTabs').addEventListener('click',event=>{const button=event.target.closest('[data-tab]');if(!button)return;activeTab=button.dataset.tab;$('viewTabs').querySelectorAll('.view-tab').forEach(tab=>tab.classList.toggle('active',tab===button));show();});
   $('compareWrap').addEventListener('pointermove',event=>{const rect=$('compareWrap').getBoundingClientRect();setSplit((event.clientX-rect.left)/rect.width);});
   bridge.register('resize',async files=>{if(files.length!==1)throw Error('Resize accepte un seul fichier à la fois. Utilisez le bouton de la ligne concernée.');return await loadFile(files[0])?1:false;});
-  bridge.mount('resize-transfer',()=>{if(!result||pending)throw Error('Attendez la génération d’un résultat valide.');return [new File([result.blob],result.name,{type:result.blob.type})];},['checkpub','kaptur','renamer']);
+  bridge.mount('resize-transfer',()=>{if(!result||pending)throw Error('Attendez la génération d’un résultat valide.');return [new File([result.blob],result.name,{type:result.blob.type})];},['checkpub','kaptur']);
   refreshOptions();
 })();
 
@@ -2880,7 +2878,7 @@ window.AdOpsBridge = (() => {
   window.AdOpsBridge.mount('banner-transfer',async()=>{
     render();const blob=await window.AdOpsBridge.encode(canvas,'image/png');
     return [new File([blob],`${sanitizeFileName(controls.fileName.value)}.png`,{type:'image/png'})];
-  },['checkpub','resize','kaptur','renamer']);
+  },['checkpub','resize','kaptur']);
 
   $("bn-downloadPng").addEventListener("click", () => {
     try {
@@ -3149,7 +3147,7 @@ function checkVisible(row){return (deviceFilter.value==='ALL'||row.matches.some(
 function renderCheckRow(row){
   const ok=row.status==='OK', unknown=row.status==='UNKNOWN';
   const mismatch=row.mismatch?`<div class="badge-mismatch">Nom annoncé : ${escHtml(row.mismatch.announced)} · réel : ${escHtml(row.mismatch.real)}</div>`:'';
-  const targets=['resize','kaptur','renamer'].map(target=>`<button type="button" class="btn cp-small" data-transfer="${target}" data-id="${row.id}" ${row.busy||unknown?'disabled':''}>${{resize:'Resize',kaptur:'Kaptur',renamer:'Renommer'}[target]}</button>`).join('');
+  const targets=['resize','kaptur'].map(target=>`<button type="button" class="btn cp-small" data-transfer="${target}" data-id="${row.id}" ${row.busy||unknown?'disabled':''}>${{resize:'Resize',kaptur:'Kaptur'}[target]}</button>`).join('');
   const compress=row.targetKo&&!row.busy?`<button class="btn-compress" type="button" data-compress="${row.id}">${row.ext==='png'?'Optimiser le PNG':'Compresser le JPG'} · ≤ ${row.targetKo} Ko</button>`:'';
   const conversion=row.offerJpg&&!row.busy?`<button type="button" class="btn-compress" data-convert="${row.id}">Convertir en JPG · fond blanc</button>`:'';
   const preview=row.previewUrl?`<div class="compress-preview-wrap"><img class="compress-preview-img" src="${row.previewUrl}" alt="Fichier corrigé"><button type="button" class="btn cp-small" data-download="${row.id}">Télécharger le fichier corrigé</button></div>`:'';
@@ -3241,7 +3239,7 @@ resultBody.addEventListener('click',event=>{
   if(button.dataset.transfer){const row=allRows.find(r=>r.id===button.dataset.id);if(row&&!row.busy)bridgeCheck.send(button.dataset.transfer,[row.file]);}
 });
 bridgeCheck.register('checkpub',handleFiles);
-bridgeCheck.mount('checkpub-transfer',()=>allRows.filter(row=>checkVisible(row)&&row.status!=='UNKNOWN'&&!row.busy).map(row=>row.file),['renamer','kaptur']);
+bridgeCheck.mount('checkpub-transfer',()=>allRows.filter(row=>checkVisible(row)&&row.status!=='UNKNOWN'&&!row.busy).map(row=>row.file),['kaptur']);
 renderTable();
 
 function launchMismatch() {
@@ -4427,7 +4425,7 @@ if (state.cta) {
         // Le précédent brouillon n'est retiré qu'après une écriture confirmée.
         try{localStorage.removeItem('kaptur_v2_state');}catch{}
         return true;
-      },error=>{if(version===saveVersion)saveNotice('Sauvegarde impossible — exportez la session pour la conserver.',true);return false;});
+      },error=>{if(version===saveVersion)saveNotice('Sauvegarde impossible.',true);return false;});
     }
     function saveSession() {
       saveVersion++;sessionDirty=true;saveNotice('Enregistrement en cours…');
@@ -4436,28 +4434,15 @@ if (state.cta) {
     async function loadSession() {
       let saved=null;
       try{saved=await sessionTransaction('readonly');}
-      catch{saveNotice('Stockage local indisponible — utilisez Exporter la session.',true);}
+      catch{saveNotice('Stockage local indisponible.',true);}
       if(saved){
         try{Object.assign(store,normalizeSession(saved.state));saveNotice('Session restaurée.');return;}
-        catch{saveNotice('Sauvegarde locale invalide. Importez une sauvegarde valide.',true);}
+        catch{saveNotice('Sauvegarde locale invalide.',true);}
       }
       try{
         const legacy=localStorage.getItem('kaptur_v2_state');
         if(legacy){Object.assign(store,normalizeSession(JSON.parse(legacy)));saveNotice('Ancienne session restaurée ; migration en cours.');}
       }catch{saveNotice('Ancienne session illisible. La session courante reste utilisable.',true);}
-    }
-    function exportSessionFile() {
-      const json=JSON.stringify({app:'Kaptur',schema:4,exportedAt:new Date().toISOString(),state:store},null,2);
-      window.AdOpsBridge.download(new Blob([json],{type:'application/json'}),(sanitizeFileName(store.campaignName)||'KAPTUR')+'_session.json');
-    }
-    async function importSessionFile(file) {
-      if(!file)return;
-      try{
-        const raw=JSON.parse(await file.text()),next=normalizeSession(raw.app==='Kaptur'?raw.state:raw);
-        if(!confirm('Remplacer la session Kaptur actuelle par cette sauvegarde ?'))return;
-        Object.assign(store,next);applyFormatDefaults();applyRuntimeDefaults();saveSession();render();
-        await persistSession();
-      }catch(error){setStatus(error.message||'Import de session impossible.','error');}
     }
     window.addEventListener('beforeunload',event=>{if(sessionDirty){event.preventDefault();event.returnValue='';}});
 
@@ -5516,6 +5501,7 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       }
       setStatus(`${assignedCount} affectation(s) automatique(s) réalisée(s).`);
       renderCanvas();
+      return assignedCount ? undefined : false;
     }
 
     function matchesSize(actual, expected, allowRotation = true) {
@@ -5627,55 +5613,6 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function receiveKapturFiles(files, metadata = {}) {
-      const dialog=document.getElementById('kaptur-map-dialog');
-      if(dialog.open)throw Error('Terminez d’abord l’import déjà ouvert dans Kaptur.');
-      const list=document.getElementById('kaptur-map-list'),error=document.getElementById('kaptur-map-error');
-      list.replaceChildren();error.textContent='';document.getElementById('kaptur-map-replace').checked=false;
-      const items=[];
-      for(const file of files){
-        const item={file,candidates:[],select:null};
-        try{
-          const image=await window.AdOpsBridge.readImage(file);item.width=image.naturalWidth;item.height=image.naturalHeight;
-          item.candidates=Object.values(FORMATS).filter(format=>acceptedSizesFor(format).some(size=>matchesSize({width:item.width,height:item.height},size,format.allowRotation!==false)));
-        }catch{}
-        const row=document.createElement('div');row.className='kaptur-map-row';
-        const label=document.createElement('label');label.textContent=file.name+(item.width?` · ${item.width}×${item.height}`:' · image illisible');
-        const select=document.createElement('select');select.id=`kaptur-map-${items.length}`;label.htmlFor=select.id;
-        const skip=document.createElement('option');skip.value='';skip.textContent=item.candidates.length?'Ignorer ce fichier / choisir un emplacement':'Aucun emplacement compatible';select.appendChild(skip);
-        item.candidates.forEach(format=>{const option=document.createElement('option');option.value=format.id;option.textContent=`${format.family} · ${format.label}${store.formats[format.id].imageDataUrl?' — déjà renseigné':''}`;select.appendChild(option);});
-        if(item.candidates.length===1)select.value=item.candidates[0].id;
-        else if(files.length===1&&item.candidates.some(format=>format.id===store.activeFormatId))select.value=store.activeFormatId;
-        select.disabled=!item.candidates.length;item.select=select;items.push(item);row.append(label,select);list.appendChild(row);
-      }
-      dialog.showModal();
-      return new Promise(resolve=>{
-        const form=document.getElementById('kaptur-map-form'),apply=document.getElementById('kaptur-map-apply'),cancel=document.getElementById('kaptur-map-cancel');
-        let busy=false,settled=false;
-        const finish=value=>{if(settled)return;settled=true;form.removeEventListener('submit',submit);dialog.removeEventListener('cancel',onCancel);dialog.removeEventListener('close',onClose);cancel.removeEventListener('click',onCancelClick);dialog.close();apply.disabled=cancel.disabled=false;resolve(value);};
-        const onClose=()=>{if(!settled)finish(false);};
-        const onCancel=event=>{event.preventDefault();if(!busy)finish(false);};
-        const onCancelClick=()=>{if(!busy)finish(false);};
-        const submit=async event=>{
-          event.preventDefault();if(busy)return;
-          const selected=items.filter(item=>item.select.value),used=new Set();
-          if(!selected.length){error.textContent='Choisissez au moins un emplacement compatible.';return;}
-          for(const item of selected){if(used.has(item.select.value)){error.textContent='Deux fichiers visent le même emplacement. Choisissez un autre emplacement ou ignorez l’un des fichiers.';return;}used.add(item.select.value);}
-          if(selected.some(item=>store.formats[item.select.value].imageDataUrl)&&!document.getElementById('kaptur-map-replace').checked){error.textContent='Un emplacement contient déjà un visuel. Cochez le remplacement pour continuer.';return;}
-          busy=true;apply.disabled=cancel.disabled=true;
-          try{
-            // Préparer toutes les données avant de modifier la session.
-            const prepared=await Promise.all(selected.map(async item=>({id:item.select.value,data:await fileToDataUrl(item.file)})));
-            for(const item of prepared){store.formats[item.id].imageDataUrl=item.data;store.formats[item.id].used=true;}
-            if(metadata.campaign&&!store.campaignName)store.campaignName=String(metadata.campaign);
-            store.activeFormatId=prepared[0].id;store.activeFamily=FORMATS[prepared[0].id].family;
-            saveSession();render();finish(prepared.length);
-          }catch(ex){error.textContent=ex.message||'Import impossible.';busy=false;apply.disabled=cancel.disabled=false;}
-        };
-        form.addEventListener('submit',submit);dialog.addEventListener('cancel',onCancel);dialog.addEventListener('close',onClose);cancel.addEventListener('click',onCancelClick);
-      });
-    }
-
     function bindEvents() {
       bindTabEvents();
       els.campaignName.addEventListener('input', () => {
@@ -5700,26 +5637,17 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       });
 
       bindDropZone(els.globalUploadZone, els.globalUploadInput, files => {
-        if (files.length) receiveKapturFiles(files).catch(error=>setStatus(error.message,'error'));
+        if (files.length) handleGlobalUpload(files).catch(error=>setStatus(error.message,'error'));
       });
 
       els.downloadBtn.addEventListener('click', exportCurrentFormat);
       els.exportCurrentBtn.addEventListener('click', exportCurrentFormat);
       els.exportAllBtn.addEventListener('click', exportAllUsedFormats);
       els.resetSessionBtn.addEventListener('click', async () => {
-        if(!confirm('Réinitialiser la session Kaptur ? Exportez-la d’abord si vous souhaitez la conserver.'))return;
+        if(!confirm('Réinitialiser la session Kaptur ?'))return;
         Object.assign(store,JSON.parse(JSON.stringify(emptySession)));applyFormatDefaults();applyRuntimeDefaults();saveSession();render();await persistSession();
       });
-      document.getElementById('kaptur-export-session').addEventListener('click',exportSessionFile);
-      document.getElementById('kaptur-import-session').addEventListener('click',()=>document.getElementById('kaptur-session-file').click());
-      document.getElementById('kaptur-session-file').addEventListener('change',event=>{importSessionFile(event.target.files[0]);event.target.value='';});
-      window.AdOpsBridge.register('kaptur',receiveKapturFiles);
-      window.AdOpsBridge.mount('kaptur-transfer',async()=>{
-        const id=store.activeFormatId,quality=Number(store.exportQuality??100),name='CAPTURE_'+replaceFileExtension(buildExportName(id),qualityPercentToExtension(quality));
-        const drawing=await renderCanvas({formatId:id,publish:false});
-        const blob=await window.AdOpsBridge.encode(drawing,qualityPercentToMimeType(quality),qualityPercentToEncoderQuality(quality));
-        return {files:[new File([blob],name,{type:blob.type})],metadata:{campaign:store.campaignName,kind:'capture'}};
-      },['renamer']);
+      window.AdOpsBridge.register('kaptur', handleGlobalUpload);
     }
 
     async function init() {
@@ -5815,10 +5743,6 @@ function crc32(data){let c=0xffffffff;for(let b of data)c=crcTable[(c^b)&255]^(c
 function dosDate(d){let y=Math.max(1980,d.getFullYear());return {time:(d.getHours()<<11)|(d.getMinutes()<<5)|(d.getSeconds()>>1),date:((y-1980)<<9)|((d.getMonth()+1)<<5)|d.getDate()}}
 function zipParts(contents){let chunks=[],central=[],offset=0,encoder=new TextEncoder();for(let {name,buffer,date} of contents){let bytes=new Uint8Array(buffer),fn=encoder.encode(name),crc=crc32(bytes),dt=dosDate(date),local=new Uint8Array(30+fn.length),v=new DataView(local.buffer);v.setUint32(0,0x04034b50,true);v.setUint16(4,20,true);v.setUint16(6,0x800,true);v.setUint16(8,0,true);v.setUint16(10,dt.time,true);v.setUint16(12,dt.date,true);v.setUint32(14,crc,true);v.setUint32(18,bytes.length,true);v.setUint32(22,bytes.length,true);v.setUint16(26,fn.length,true);local.set(fn,30);chunks.push(local,bytes);let cent=new Uint8Array(46+fn.length),c=new DataView(cent.buffer);c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);c.setUint16(8,0x800,true);c.setUint16(10,0,true);c.setUint16(12,dt.time,true);c.setUint16(14,dt.date,true);c.setUint32(16,crc,true);c.setUint32(20,bytes.length,true);c.setUint32(24,bytes.length,true);c.setUint16(28,fn.length,true);c.setUint32(42,offset,true);cent.set(fn,46);central.push(cent);offset+=local.length+bytes.length}let centralSize=central.reduce((n,c)=>n+c.length,0);let end=new Uint8Array(22),v=new DataView(end.buffer);v.setUint32(0,0x06054b50,true);v.setUint16(8,contents.length,true);v.setUint16(10,contents.length,true);v.setUint32(12,centralSize,true);v.setUint32(16,offset,true);return new Blob([...chunks,...central,end],{type:'application/zip'})}
 $('zip').onclick=async()=>{if(!entries.length)return;const batch=entries.slice(),btn=$('zip');btn.disabled=true;btn.textContent='Préparation du ZIP…';try{if(batch.length>65535)throw Error('ZIP limité à 65 535 fichiers');let names=uniqueNames(),contents=[];for(let i=0;i<batch.length;i++){let e=batch[i];contents.push({name:names[i],buffer:await e.file.arrayBuffer(),date:new Date(e.file.lastModified||Date.now())})}let zip=zipParts(contents);download(zip,(normalize($('campaign').value)||'CAMPAGNE')+'_creas.zip');$('notice').textContent=`ZIP créé : ${batch.length} fichier(s) renommé(s) · ${(zip.size/1024/1024).toFixed(2)} Mo.`}catch(e){error('Export impossible : '+e.message)}finally{btn.disabled=!entries.length;btn.textContent='↓ ZIP (optionnel)'}};
-window.AdOpsBridge.register('renamer',async(files,metadata={})=>{
-  if(metadata.campaign&&!$('campaign').value)$('campaign').value=metadata.campaign;
-  return await addFiles(files,metadata);
-});
 window.AdOpsBridge.mount('renamer-transfer',()=>{
   const transferable=entries.filter(entry=>!entry.capture);
   const names=uniqueNames();
