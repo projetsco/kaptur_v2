@@ -440,6 +440,8 @@
     .header-badge { order: 2; margin-left: auto; }
   }
 
+  /* TEXTE HTML */
+  #panel-html.active{display:block}#panel-html .html-tool-wrap{max-width:1180px;margin:0 auto}#panel-html .html-tool-heading{margin-bottom:20px}#panel-html .html-tool-heading h1{font-size:22px;font-weight:700;margin-bottom:5px}#panel-html .html-tool-heading p{font-size:13px;color:var(--text-sec);line-height:1.5}#panel-html .html-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}#panel-html .html-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);min-width:0}#panel-html .html-card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}#panel-html .html-card-title{font-size:13.5px;font-weight:600}#panel-html .html-toolbar{display:flex;gap:6px;margin-bottom:10px}#panel-html .html-format-btn{width:38px;height:36px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text-sec);cursor:pointer;font:14px var(--sans)}#panel-html .html-format-btn:hover,#panel-html .html-format-btn.is-active{color:var(--blue);border-color:rgba(24,87,232,.35);background:var(--blue-dim)}#panel-html .html-editor{min-height:260px;padding:14px;border:1px solid var(--border-strong);border-radius:10px;background:#fff;color:var(--text);font-size:14px;line-height:1.65;outline:none;overflow-wrap:anywhere}#panel-html .html-editor:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,87,232,.12)}#panel-html .html-editor:empty:before{content:attr(data-placeholder);color:var(--text-muted)}#panel-html .html-actions{display:flex;gap:8px;margin-top:12px}#panel-html .html-actions .btn.primary{flex:1}#panel-html .html-output{width:100%;min-height:306px;margin:0;padding:14px;border:1px solid var(--border-strong);border-radius:10px;background:#0F172A;color:#DCE7F7;font:12.5px/1.65 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere;overflow:auto}#panel-html .html-copy-note{min-height:18px;margin-top:9px;color:#128a56;font-size:11.5px}#panel-html .html-preview{display:none;margin-top:12px;padding:14px;border:1px solid var(--border-strong);border-radius:10px;background:#fff;color:var(--text);font-size:14px;line-height:1.65;min-height:70px;overflow-wrap:anywhere}#panel-html .html-preview.is-open{display:block}#panel-html .html-preview a{color:var(--blue);text-decoration:underline;text-underline-offset:2px}@media(max-width:820px){#panel-html .html-grid{grid-template-columns:1fr}}
   /* ============================================================ */
   /* CHECKPUB — styles scopés sous #panel-checkpub                   */
   /* ============================================================ */
@@ -1648,6 +1650,128 @@
       background: #FAFBFC;
     }
   
+  /* V3 — navigation et outils de production */
+  .header .tool-tabs { flex-wrap: wrap; max-width: 100%; margin-left: 0; order: 3; flex: 1 1 100%; }
+  #panel-banner.active, #panel-renamer.active { grid-template-columns: 320px minmax(0, 1fr); }
+  #panel-banner .module-heading, #panel-renamer .module-heading { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 2px; }
+  #panel-banner .module-heading h1, #panel-renamer .module-heading h1 { font-size: 22px; letter-spacing: -.4px; font-weight: 700; }
+  #panel-banner .module-heading p, #panel-renamer .module-heading p { font-size: 13px; color: var(--text-sec); line-height: 1.6; margin-top: 5px; }
+  #panel-banner .module-tag, #panel-renamer .module-tag { display: inline-flex; align-items: center; gap: 6px; padding: 7px 11px; font: 11px var(--mono); white-space: nowrap; color: var(--blue); border: 1px solid #D5E2FC; background: var(--blue-dim); border-radius: 7px; }
+  #panel-banner .field-row .field + .field { margin-top: 0; }
+  #panel-banner .bn-space { margin-top: 14px; }
+  #panel-banner .card, #panel-renamer .card { padding: 18px; }
+  #panel-banner .section-label, #panel-renamer .section-label { color: var(--text-sec); font-size: 10.5px; }
+  #panel-banner .bn-card-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 16px; }
+  #panel-banner .bn-card-heading .section-label { margin: 0; }
+  #panel-banner .bn-small-btn { padding: 6px 9px; font-size: 11px; }
+  #panel-banner .btn, #panel-renamer .btn { font-family: var(--sans); }
+  #panel-banner .bn-workspace { position: sticky; top: 20px; min-width: 0; gap: 16px; }
+  #panel-banner .preview-toolbar { align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; }
+  #panel-banner .preview-toolbar h2 { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+  #panel-banner #bn-previewArea { min-height: 360px; padding: 28px; box-shadow: none; border-radius: 10px; }
+  #panel-banner #bn-canvas { max-width: 100%; max-height: 540px; border-radius: 0; }
+  #panel-banner .bn-export-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
+  #panel-banner .bn-quality { min-width: 0; }
+  #panel-banner .bn-downloads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0 12px; }
+  #panel-banner .error-msg:empty { display: none; }
+  #panel-banner .error-msg { margin-top: 10px; }
+  #panel-banner .slider-track input { width: 100%; min-width: 0; height: 16px; }
+  #panel-banner .checks { display: grid; grid-template-columns: repeat(3, 1fr); }
+  #panel-banner .check-pill { justify-content: center; padding: 8px 5px; }
+  #panel-banner .check-pill:has(input:checked) { color: var(--blue); border-color: #C5D7FC; background: var(--blue-dim); }
+  #panel-banner input[type=color] { height: 38px; }
+  #panel-renamer .cr-workspace { min-width: 0; gap: 16px; }
+  #panel-renamer .cr-settings .field + .field { margin-top: 16px; }
+  #panel-renamer .cr-check { display: flex; align-items: flex-start; gap: 9px; margin-top: 18px; font-size: 12px; line-height: 1.6; color: var(--text-sec); cursor: pointer; }
+  #panel-renamer .cr-check input { flex: 0 0 auto; width: 15px; height: 15px; accent-color: var(--blue); margin-top: 2px; }
+  #panel-renamer .cr-example { margin-top: 22px; padding: 13px; background: var(--blue-dim); border: 1px solid #D5E2FC; border-radius: 9px; }
+  #panel-renamer .cr-example .section-label { font-size: 10px; margin-bottom: 8px; color: var(--blue); }
+  #panel-renamer .cr-example code { color: var(--blue); font: 12px/1.6 var(--mono); overflow-wrap: anywhere; }
+  #panel-renamer .cr-help p { font-size: 12px; line-height: 1.7; color: var(--text-sec); }
+  #panel-renamer .cr-help p + p { margin-top: 10px; }
+  #panel-renamer .dropzone { background: #fff; padding: 28px 20px; }
+  #panel-renamer .dropzone.drag, #panel-renamer .dropzone:hover { background: var(--blue-dim); border-color: var(--blue); }
+  #panel-renamer .dropzone strong { font-size: 15px; font-weight: 600; }
+  #panel-renamer .dropzone-hint { margin: 7px 0 16px; color: var(--text-sec); }
+  #panel-renamer .cr-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  #panel-renamer .cr-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+  #panel-renamer .cr-stats > span { font-size: 12px; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 9px 11px; color: var(--text-sec); }
+  #panel-renamer .cr-stats b { color: var(--text); }
+  #panel-renamer .cr-table-card { padding: 0; overflow: hidden; }
+  #panel-renamer .cr-scroll { overflow-x: auto; }
+  #panel-renamer table { width: 100%; min-width: 710px; border-collapse: collapse; text-align: left; table-layout: auto; }
+  #panel-renamer th { background: #F8FAFC; padding: 13px 12px; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-sec); font-weight: 600; }
+  #panel-renamer td { padding: 12px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text); }
+  #panel-renamer .cr-thumb { display: block; width: 44px; height: 44px; object-fit: contain; background: #F8FAFC; border: 1px solid var(--border); border-radius: 7px; }
+  #panel-renamer .cr-orig { overflow-wrap: anywhere; max-width: 185px; font-weight: 500; }
+  #panel-renamer .cr-muted { margin-top: 5px; font-size: 11px; color: var(--text-sec); }
+  #panel-renamer .cr-new { font: 11px/1.6 var(--mono); color: var(--blue); max-width: 240px; overflow-wrap: anywhere; }
+  #panel-renamer .cr-dim { white-space: nowrap; font: 11px var(--mono); }
+  #panel-renamer .cr-version { width: 66px; padding: 8px; border: 1px solid var(--border-strong); border-radius: 7px; font: 12px var(--mono); color: var(--text); background: #fff; }
+  #panel-renamer .cr-row-actions { display: flex; align-items: center; gap: 6px; }
+  #panel-renamer .cr-mini-download { background: var(--blue-dim); border: 1px solid #D5E2FC; color: var(--blue); font: 11px var(--sans); border-radius: 7px; padding: 8px; cursor: pointer; white-space: nowrap; }
+  #panel-renamer .cr-remove { background: none; border: 1px solid transparent; color: var(--text-sec); font-size: 21px; width: 28px; height: 30px; border-radius: 6px; cursor: pointer; }
+  #panel-renamer .cr-remove:hover { color: #B42318; background: #FEF3F2; }
+  #panel-renamer .cr-empty { padding: 48px 16px; text-align: center; color: var(--text-muted); }
+  #panel-renamer .cr-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+  #panel-renamer .cr-actions .primary { flex: 1 1 240px; }
+  #panel-renamer .cr-alert { display: none; border: 1px solid #F1CDC9; background: #FEF3F2; color: #B42318; font-size: 12px; padding: 12px 14px; border-radius: 9px; overflow-wrap: anywhere; }
+  #panel-renamer .cr-alert.show { display: block; }
+  #panel-renamer .cr-notice { font-size: 12px; line-height: 1.6; color: #128A56; margin-top: 12px; }
+  #panel-renamer .cr-notice:empty { display: none; }
+  #panel-banner :focus-visible, #panel-renamer :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+  @media (max-width: 1050px) {
+    #panel-banner.active, #panel-renamer.active { grid-template-columns: 280px minmax(0, 1fr); }
+    #panel-banner .bn-workspace { position: static; }
+    #panel-banner .bn-export-fields { grid-template-columns: 1fr; gap: 16px; }
+  }
+  @media (max-width: 760px) {
+    .header .tool-tabs { gap: 3px; }
+    .header .tool-tab { flex: 1 0 29%; padding: 10px 6px; font-size: 12px; }
+    #panel-banner.active, #panel-renamer.active { grid-template-columns: minmax(0, 1fr); }
+    #panel-banner .module-heading, #panel-renamer .module-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
+    #panel-banner .field-row { grid-template-columns: 1fr 1fr; }
+    #panel-banner #bn-previewArea { min-height: 260px; padding: 18px; }
+    #panel-banner #bn-canvas { max-height: 460px; }
+    #panel-banner .bn-downloads { gap: 7px; }
+    #panel-banner .bn-downloads .btn { padding: 10px 8px; }
+    #panel-renamer .cr-actions .btn { flex: 1 1 auto; }
+  }
+
+  /* V4 — transferts, sauvegardes et statuts */
+  .adops-transfer { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:8px; }
+  .adops-transfer select { width:auto; flex:1; min-width:115px; font:12px var(--sans); }
+  .adops-transfer .btn { flex:0 0 auto; font:12px var(--sans); padding:9px 12px; }
+  .adops-transfer-status { background:#EEF5FF; color:#1857E8; border:1px solid #CBDDFE; padding:12px 16px; border-radius:10px; font-size:12px; margin-bottom:20px; }
+  .adops-transfer-status.is-error { background:#FEF3F2; color:#B42318; border-color:#F1CCC7; }
+  .adops-transfer-status[hidden], #resize-crop-controls[hidden], #resize-bg-field[hidden] { display:none; }
+  #panel-resize #resize-crop-controls { margin:12px 0; }
+  #panel-resize input[type=range] { accent-color:var(--blue); }
+  #panel-resize #resize-source-note { margin-top:10px; }
+  #panel-checkpub .stats-grid { grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); }
+  #panel-checkpub .cp-meta { font-size:11px; line-height:1.5; color:#5B6577; margin-top:5px; max-width:350px; overflow-wrap:anywhere; }
+  #panel-checkpub .cp-transfers { display:flex; gap:5px; flex-wrap:wrap; margin-top:10px; }
+  #panel-checkpub .cp-small { font-size:11px; padding:6px 8px; }
+  #panel-checkpub .cp-transfer-summary { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; font-size:12px; color:#5B6577; margin:16px 0; }
+  #panel-checkpub .compress-error { display:block; margin-top:8px; }
+  #panel-kaptur .kaptur-backup { padding:12px; border:1px solid #D7DFEA; border-radius:10px; background:#F8FAFC; margin-bottom:16px; }
+  #panel-kaptur #kaptur-save-status { font-size:11px; line-height:1.5; color:#1B5E20; margin-bottom:9px; }
+  #panel-kaptur #kaptur-save-status.is-error { color:#B42318; }
+  #panel-kaptur .backup-actions { display:flex; flex-wrap:wrap; gap:6px; }
+  #panel-kaptur .backup-actions .btn { flex:1; padding:7px; font-size:11px; }
+  #panel-kaptur #kaptur-preview-error { padding:20px; font-size:13px; color:#B42318; text-align:center; }
+  #panel-kaptur #kaptur-preview-error:empty { display:none; }
+  #panel-kaptur .kaptur-capture-transfer { padding:14px; border-top:1px solid #D7DFEA; }
+  .adops-dialog { margin:auto; width:min(660px,94vw); max-height:85vh; overflow:auto; padding:24px; border:1px solid #CBD2DE; border-radius:14px; font-family:var(--sans); background:white; color:#16202E; }
+  .adops-dialog::backdrop { background:rgba(15,23,42,.4); }
+  .adops-dialog h2 { font-size:18px; margin-bottom:10px; }
+  .adops-dialog p { font-size:12px; line-height:1.6; margin:10px 0; }
+  .kaptur-map-row { border-top:1px solid #E3E7EE; padding:12px 0; }
+  .kaptur-map-row label { display:block; font-size:12px; margin-bottom:7px; overflow-wrap:anywhere; }
+  .map-replace { display:flex; gap:8px; font-size:12px; align-items:flex-start; line-height:1.5; margin:16px 0; }
+  .map-replace input { accent-color:var(--blue); margin-top:2px; }
+  .adops-dialog-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:16px; }
+
 </style>
 </head>
 <body>
@@ -1666,10 +1790,14 @@
       <button class="tool-tab" data-panel="panel-checkpub"><i class="ti ti-checkbox"></i> CheckPub</button>
       <button class="tool-tab" data-panel="panel-resize"><i class="ti ti-photo-scan"></i> Resize</button>
       <button class="tool-tab" data-panel="panel-banner"><i class="ti ti-layout-board-split"></i> Bannières</button>
+      <button class="tool-tab" data-panel="panel-html"><i class="ti ti-code"></i> Texte HTML</button>
+      <button class="tool-tab" data-panel="panel-renamer"><i class="ti ti-files"></i> Renommage</button>
     </nav>
 
     <div class="header-badge" id="globalBadge">Capture d'écran</div>
   </header>
+<div id="adops-transfer-status" class="adops-transfer-status" role="status" aria-live="polite" hidden></div>
+
 
   <!-- ============================================================ -->
   <!-- PANEL 1 — RESIZE                                              -->
@@ -1715,6 +1843,12 @@
         </div>
       </div>
 
+      <div class="card">
+        <div class="section-label">Adapter l’image</div>
+        <div class="field"><label for="resize-fit">Si les proportions diffèrent</label><select id="resize-fit"><option value="cover">Recadrer sans déformer</option><option value="contain">Conserver l’image avec des marges</option><option value="stretch">Étirer aux dimensions choisies</option></select></div>
+        <div id="resize-crop-controls"><div class="field"><label for="resize-crop-x">Cadrage horizontal</label><input id="resize-crop-x" type="range" min="0" max="100" value="50"></div><div class="field"><label for="resize-crop-y">Cadrage vertical</label><input id="resize-crop-y" type="range" min="0" max="100" value="50"></div></div>
+        <div class="field" id="resize-bg-field" hidden><label for="resize-bg">Fond des marges / du JPG</label><input id="resize-bg" type="color" value="#ffffff"></div><p id="resize-source-note" class="note" role="status"></p>
+      </div>
       <div class="card">
         <div class="section-label"><i class="ti ti-ruler-2"></i> Dimensions</div>
 
@@ -1767,6 +1901,7 @@
         </div>
       </div>
 
+      <div class="card"><div class="section-label">Réutiliser le fichier exporté</div><div id="resize-transfer"></div></div>
       <div class="status" id="statusBar">
         <div class="status-row">
           <span style="color:var(--text-muted); font-size:11.5px;">En attente d'une image…</span>
@@ -1790,8 +1925,8 @@
         <div class="compare-wrap" id="compareWrap" style="display:none;">
           <canvas id="cOrig"></canvas>
           <canvas id="cOut" style="clip-path:inset(0 50% 0 0);"></canvas>
-          <div class="compare-label orig">ORIGINAL</div>
-          <div class="compare-label out">SORTIE</div>
+          <div class="compare-label orig">AVANT ENCODAGE</div>
+          <div class="compare-label out">FICHIER EXPORTÉ</div>
           <div class="slider-line" id="sLine" style="left:50%"></div>
           <div class="slider-handle" id="sHandle" style="left:50%"><i class="ti ti-arrows-horizontal"></i></div>
         </div>
@@ -1804,140 +1939,87 @@
   <!-- PANEL 2 — GÉNÉRATEUR DE BANNIÈRES                             -->
   <!-- ============================================================ -->
   <section class="tool-panel" id="panel-banner">
-
-    <aside class="sidebar">
-
+    <header class="module-heading"><div><h1>Bannières</h1><p>Créez un visuel de test, ajustez votre texte et téléchargez-le au format souhaité.</p></div><span class="module-tag">PNG · JPG · GIF fixe</span></header>
+    <aside class="sidebar bn-settings">
       <div class="card">
-        <div class="section-label"><i class="ti ti-ruler-2"></i> Dimensions</div>
-        <div class="field-row">
-          <div class="field">
-            <label>Largeur px</label>
-            <input id="bn-width" type="number" min="1" max="5000" value="728">
-          </div>
-          <div class="field">
-            <label>Hauteur px</label>
-            <input id="bn-height" type="number" min="1" max="5000" value="90">
-          </div>
-        </div>
+        <h2 class="section-label"><i class="ti ti-ruler-2"></i> Format et fond</h2>
+        <div class="field"><label for="bn-preset">Format rapide</label><select id="bn-preset">
+          <option value="custom">Dimensions personnalisées</option>
+          <option value="728x90" selected>728 × 90 — Mégabannière</option>
+          <option value="970x250">970 × 250 — Billboard</option>
+          <option value="300x250">300 × 250 — Pavé</option>
+          <option value="300x600">300 × 600 — Grand angle</option>
+          <option value="320x100">320 × 100 — Bannière mobile</option>
+          <option value="320x480">320 × 480 — Interstitiel</option>
+          <option value="680x1024">680 × 1024 — Interstitiel App</option>
+          <option value="656x280">656 × 280 — Natif</option>
+          <option value="628x354">628 × 354 — BP1</option>
+          <option value="100x136">100 × 136 — BP2 / BP3 / BP4</option>
+        </select></div>
+        <div class="field-row bn-space"><div class="field"><label for="bn-width">Largeur (px)</label><input id="bn-width" type="number" min="1" max="5000" value="728"></div><div class="field"><label for="bn-height">Hauteur (px)</label><input id="bn-height" type="number" min="1" max="5000" value="90"></div></div>
+        <div class="field bn-space"><label for="bn-bgColor">Couleur de fond</label><input id="bn-bgColor" type="color" value="#1857E8"></div>
       </div>
-
       <div class="card">
-        <div class="section-label"><i class="ti ti-palette"></i> Fond</div>
-        <div class="field">
-          <label>Couleur de fond</label>
-          <input id="bn-bgColor" type="color" value="#1857E8">
-        </div>
+        <h2 class="section-label"><i class="ti ti-typography"></i> Texte et style</h2>
+        <div class="field"><label for="bn-text">Votre texte</label><textarea id="bn-text" rows="3">Votre message ici</textarea></div>
+        <div class="field-row bn-space"><div class="field"><label for="bn-fontFamily">Police</label><select id="bn-fontFamily"><option value="Arial">Arial</option><option value="Verdana">Verdana</option><option value="Georgia">Georgia</option><option value="'Trebuchet MS'">Trebuchet MS</option><option value="'Times New Roman'">Times New Roman</option><option value="'Courier New'">Courier New</option><option value="Impact">Impact</option><option value="system-ui" selected>System UI</option></select></div><div class="field"><label for="bn-fontSize">Taille (px)</label><input id="bn-fontSize" type="number" min="6" max="500" value="32"></div></div>
+        <div class="field-row bn-space"><div class="field"><label for="bn-textColor">Couleur du texte</label><input id="bn-textColor" type="color" value="#ffffff"></div><div class="field"><label for="bn-align">Alignement</label><select id="bn-align"><option value="left">Gauche</option><option value="center" selected>Centre</option><option value="right">Droite</option></select></div></div>
+        <div class="checks bn-space"><label class="check-pill"><input id="bn-bold" type="checkbox" checked> Gras</label><label class="check-pill"><input id="bn-italic" type="checkbox"> Italique</label><label class="check-pill"><input id="bn-shadow" type="checkbox"> Ombre</label></div>
       </div>
-
       <div class="card">
-        <div class="section-label"><i class="ti ti-typography"></i> Texte</div>
-        <div class="field">
-          <label>Contenu</label>
-          <textarea id="bn-text">Votre message ici</textarea>
-        </div>
-
-        <div class="field-row" style="margin-top:10px;">
-          <div class="field">
-            <label>Couleur du texte</label>
-            <input id="bn-textColor" type="color" value="#ffffff">
-          </div>
-          <div class="field">
-            <label>Taille px</label>
-            <input id="bn-fontSize" type="number" min="6" max="500" value="32">
-          </div>
-        </div>
-
-        <div class="field-row" style="margin-top:10px;">
-          <div class="field">
-            <label>Police</label>
-            <select id="bn-fontFamily">
-              <option value="Arial">Arial</option>
-              <option value="Verdana">Verdana</option>
-              <option value="Georgia">Georgia</option>
-              <option value="'Trebuchet MS'">Trebuchet MS</option>
-              <option value="'Times New Roman'">Times New Roman</option>
-              <option value="'Courier New'">Courier New</option>
-              <option value="Impact">Impact</option>
-              <option value="system-ui" selected>System UI</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Alignement</label>
-            <select id="bn-align">
-              <option value="left">Gauche</option>
-              <option value="center" selected>Centre</option>
-              <option value="right">Droite</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="checks" style="margin-top:10px;">
-          <label class="check-pill"><input id="bn-bold" type="checkbox" checked> Gras</label>
-          <label class="check-pill"><input id="bn-italic" type="checkbox"> Italique</label>
-          <label class="check-pill"><input id="bn-shadow" type="checkbox"> Ombre</label>
-        </div>
+        <div class="bn-card-heading"><h2 class="section-label"><i class="ti ti-arrows-move"></i> Position du texte</h2><button class="btn bn-small-btn" type="button" id="bn-center">Recentrer</button></div>
+        <div class="slider-label-row"><label for="bn-xPos">Horizontale</label><span class="slider-val" id="bn-xValue">50%</span></div><div class="slider-track"><input id="bn-xPos" type="range" min="0" max="100" value="50"></div>
+        <div class="slider-label-row bn-space"><label for="bn-yPos">Verticale</label><span class="slider-val" id="bn-yValue">50%</span></div><div class="slider-track"><input id="bn-yPos" type="range" min="0" max="100" value="50"></div>
+        <p class="note bn-space">Déplacez aussi le texte en le faisant glisser dans l’aperçu.</p>
       </div>
-
-      <div class="card">
-        <div class="section-label"><i class="ti ti-arrows-move"></i> Position</div>
-        <div class="slider-label-row">
-          <label>Horizontale</label>
-          <span class="slider-val" id="bn-xValue">50%</span>
-        </div>
-        <div class="slider-track">
-          <input id="bn-xPos" type="range" min="0" max="100" value="50">
-        </div>
-
-        <div class="slider-label-row" style="margin-top:10px;">
-          <label>Verticale</label>
-          <span class="slider-val" id="bn-yValue">50%</span>
-        </div>
-        <div class="slider-track">
-          <input id="bn-yPos" type="range" min="0" max="100" value="50">
-        </div>
-        <p class="note" style="margin-top:8px;">Le texte peut aussi être déplacé directement à la souris dans l'aperçu.</p>
-      </div>
-
-      <div class="card">
-        <div class="section-label"><i class="ti ti-file-export"></i> Export</div>
-        <div class="field">
-          <label>Nom du fichier</label>
-          <input id="bn-fileName" type="text" value="banniere">
-        </div>
-
-        <div style="margin-top:12px;">
-          <div class="slider-label-row">
-            <label>Qualité JPG</label>
-            <span class="slider-val" id="bn-qualityValue">92%</span>
-          </div>
-          <div class="slider-track">
-            <input id="bn-jpgQuality" type="range" min="10" max="100" value="92">
-          </div>
-        </div>
-
-        <div class="btn-row" style="margin-top:12px;">
-          <button class="btn primary" id="bn-downloadPng"><i class="ti ti-download"></i> PNG</button>
-          <button class="btn primary" id="bn-downloadJpg"><i class="ti ti-download"></i> JPG</button>
-          <button class="btn primary" id="bn-downloadGif"><i class="ti ti-download"></i> GIF</button>
-        </div>
-        <p class="note" style="margin-top:8px;">Le GIF généré est une image fixe, adaptée aux plateformes qui l'exigent.</p>
-        <div class="error-msg" id="bn-error"></div>
-      </div>
-
     </aside>
-
-    <main class="main-panel">
-      <div class="preview-toolbar">
-        <strong>Aperçu</strong>
-        <span class="header-badge" id="bn-dimensionsLabel" style="margin-left:0;">728 × 90 px</span>
-      </div>
-
-      <div class="preview-area checker" id="bn-previewArea">
-        <canvas id="bn-canvas" width="728" height="90" aria-label="Aperçu de la bannière"></canvas>
-      </div>
+    <main class="main-panel bn-workspace">
+      <section class="card bn-preview-card" aria-label="Aperçu de la bannière">
+        <div class="preview-toolbar"><div><h2>Aperçu en direct</h2><p class="note">L’affichage s’adapte à l’écran ; les dimensions exportées restent exactes.</p></div><span class="module-tag" id="bn-dimensionsLabel">728 × 90 px</span></div>
+        <div class="preview-area checker" id="bn-previewArea"><canvas id="bn-canvas" width="728" height="90" aria-label="Aperçu de la bannière"></canvas></div>
+      </section>
+      <section class="card bn-export-card">
+        <h2 class="section-label"><i class="ti ti-file-export"></i> Télécharger la bannière</h2>
+        <div class="bn-export-fields"><div class="field"><label for="bn-fileName">Nom du fichier</label><input id="bn-fileName" type="text" value="banniere"></div><div class="bn-quality"><div class="slider-label-row"><label for="bn-jpgQuality">Qualité JPG</label><span class="slider-val" id="bn-qualityValue">92%</span></div><div class="slider-track"><input id="bn-jpgQuality" type="range" min="10" max="100" value="92"></div></div></div>
+        <div class="bn-downloads"><button class="btn primary" id="bn-downloadPng"><i class="ti ti-download"></i> PNG</button><button class="btn" id="bn-downloadJpg"><i class="ti ti-download"></i> JPG</button><button class="btn" id="bn-downloadGif"><i class="ti ti-download"></i> GIF fixe</button></div>
+        <p class="note">PNG sans perte · JPG avec qualité ajustable · GIF non animé</p><div class="error-msg" id="bn-error" role="alert"></div><div class="bn-space"><p class="note">Envoyer le visuel en PNG à un autre outil</p><div id="banner-transfer"></div></div>
+      </section>
     </main>
-
   </section>
+
+<dialog id="kaptur-map-dialog" class="adops-dialog" aria-labelledby="kaptur-map-title"><form id="kaptur-map-form"><h2 id="kaptur-map-title">Choisir les emplacements Kaptur</h2><p>Chaque fichier est affecté à un emplacement. Les formats proposés acceptent ses dimensions pour la capture.</p><div id="kaptur-map-list"></div><label class="map-replace"><input type="checkbox" id="kaptur-map-replace"> Remplacer les visuels des emplacements déjà renseignés</label><p id="kaptur-map-error" class="error-msg" role="alert"></p><div class="adops-dialog-actions"><button type="submit" class="btn primary" id="kaptur-map-apply">Importer la sélection</button><button type="button" class="btn" id="kaptur-map-cancel">Annuler</button></div></form></dialog>
+<dialog id="html-link-dialog" aria-labelledby="html-link-title" style="margin:auto;padding:24px;border:1px solid #CBD2DE;border-radius:14px;width:min(460px,90vw)">
+<form id="html-link-form"><h2 id="html-link-title" style="margin-bottom:16px">Ajouter ou modifier un lien</h2>
+<label for="html-link-url">Adresse du lien</label><input id="html-link-url" type="text" style="width:100%;margin:10px 0;padding:10px" placeholder="https://exemple.fr" autocomplete="off">
+<p id="html-link-error" role="alert" style="color:#a32020;margin-bottom:12px"></p>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" type="submit">Enregistrer</button><button class="btn" id="html-link-cancel" type="button">Annuler</button><button class="btn" id="html-link-remove" type="button">Retirer le lien</button></div></form></dialog>
+  <section class="tool-panel" id="panel-renamer">
+    <header class="module-heading"><div><h1>Renommage des créas</h1><p>Un nom de campagne, des dimensions détectées et des versions organisées par format.</p></div><span class="module-tag"><i class="ti ti-lock"></i> Traitement local</span></header>
+    <aside class="sidebar cr-settings">
+      <div class="card"><h2 class="section-label"><i class="ti ti-adjustments"></i> Paramètres de nommage</h2>
+        <div class="field"><label for="cr-campaign">Nom de campagne</label><input type="text" id="cr-campaign" placeholder="Ex. DISNEY_NOEL_2026" value=""><p class="note">Espaces et caractères spéciaux normalisés.</p></div>
+        <div class="field"><label for="cr-separator">Séparateur</label><select id="cr-separator"><option value="_">Underscore ( _ )</option><option value="-">Tiret ( - )</option></select></div>
+        <div class="field"><label for="cr-order">Structure du nom</label><select id="cr-order"><option value="campaign-size-version">Campagne · Dimensions · Version</option><option value="campaign-version-size">Campagne · Version · Dimensions</option><option value="size-campaign-version">Dimensions · Campagne · Version</option></select></div>
+        <label class="cr-check"><input type="checkbox" id="cr-onlyMultiple" checked><span>Ajouter une version uniquement si plusieurs créas ont les mêmes dimensions</span></label>
+        <label class="cr-check"><input type="checkbox" id="cr-preserveName"><span>Ajouter le nom original en suffixe</span></label>
+        <div class="cr-example"><span class="section-label">Aperçu du nom</span><code id="cr-example">CAMPAGNE_300x250_V1.jpg</code></div>
+      </div>
+      <div class="card cr-help"><h2 class="section-label"><i class="ti ti-info-circle"></i> Fichiers préservés</h2><p>Les dimensions sont lues dans chaque image. Le renommage ne modifie ni sa qualité, ni son contenu : les GIF restent animés.</p><p>Les versions suivent l’ordre d’ajout et restent modifiables dans le tableau.</p></div>
+    </aside>
+    <main class="main-panel cr-workspace">
+      <div class="dropzone" id="cr-dropzone" tabindex="0" role="button" aria-label="Ajouter des créations à renommer">
+        <div class="dropzone-icon"><i class="ti ti-upload"></i></div><strong>Glissez vos créations ici</strong><p class="dropzone-hint">PNG, JPG, GIF, WEBP, SVG, BMP ou AVIF · Plusieurs fichiers à la fois</p>
+        <button class="btn primary" type="button" id="cr-choose">Sélectionner des fichiers</button><input hidden type="file" id="cr-fileInput" multiple accept="image/*,.svg,.avif">
+      </div>
+      <div class="cr-alert" id="cr-alert" role="alert"></div>
+      <div class="cr-toolbar"><div class="cr-stats"><span><b id="cr-count">0</b> créa(s)</span><span><b id="cr-formats">0</b> format(s)</span><span id="cr-bytes">0 Mo</span></div><button class="btn" id="cr-clear" disabled>Tout effacer</button></div>
+      <div class="card cr-table-card"><div class="cr-scroll" tabindex="0" role="region" aria-label="Liste des fichiers et nouveaux noms"><table><thead><tr><th>Aperçu</th><th>Fichier original</th><th>Dimensions</th><th>Version</th><th>Nouveau nom</th><th>Actions</th></tr></thead><tbody id="cr-tbody"><tr><td colspan="6" class="cr-empty">Aucun fichier ajouté pour le moment.</td></tr></tbody></table></div></div>
+      <section class="card cr-export"><h2 class="section-label"><i class="ti ti-file-export"></i> Télécharger les fichiers renommés</h2><div class="cr-actions"><button class="btn primary" id="cr-all" disabled>↓ Télécharger tous les fichiers</button><button class="btn" id="cr-zip" disabled>↓ ZIP (optionnel)</button><button class="btn" id="cr-csv" disabled>Exporter CSV</button></div><p class="note">Le téléchargement direct conserve des fichiers séparés. Selon le navigateur, un dossier de destination ou l’autorisation des téléchargements multiples sera demandé.</p><p class="cr-notice" id="cr-notice" role="status" aria-live="polite"></p><div id="renamer-transfer"></div></section>
+    </main>
+  </section>
+
+  <!-- PANEL 5 — TEXTE HTML -->
+  <section class="tool-panel" id="panel-html"><div class="html-tool-wrap"><div class="html-tool-heading"><h1>Transformer un texte en HTML</h1><p>Saisissez votre texte : le code se met à jour automatiquement. L’aperçu est indicatif et ne reproduit pas le rendu GAM ou App.</p></div><div class="html-grid"><div class="html-card"><div class="html-card-head"><span class="html-card-title">Texte à transformer</span><span class="header-badge" style="margin-left:0">Éditeur visuel</span></div><div class="html-toolbar"><button type="button" class="html-format-btn" id="html-bold" title="Gras"><strong>B</strong></button><button type="button" class="html-format-btn" id="html-italic" title="Italique"><em>I</em></button><button type="button" class="html-format-btn" id="html-link" title="Ajouter un lien"><i class="ti ti-link"></i></button></div><div id="html-editor" aria-label="Texte à transformer en HTML" class="html-editor" contenteditable="true" role="textbox" aria-multiline="true" data-placeholder="Écrivez votre texte ici…"></div><p id="html-save-state" role="status" style="font-size:11px;margin-top:8px"></p><div class="html-actions"><button type="button" class="btn primary" id="html-transform"><i class="ti ti-code"></i> Transformer en HTML</button><button type="button" class="btn icon-only" id="html-clear" title="Effacer"><i class="ti ti-trash"></i></button></div></div><div class="html-card"><div class="html-card-head"><span class="html-card-title">Résultat HTML</span><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn" id="html-preview-btn" aria-expanded="false" aria-controls="html-preview"><i class="ti ti-eye"></i> Tester le rendu</button><button type="button" class="btn" id="html-copy"><i class="ti ti-copy"></i> Copier le HTML</button></div></div><pre id="html-output" class="html-output" aria-live="polite">Le code HTML apparaîtra ici.</pre><div id="html-preview" class="html-preview" aria-live="polite"></div><div id="html-copy-note" class="html-copy-note" aria-live="polite"></div></div></div></div></section>
 
   <!-- ============================================================ -->
   <!-- PANEL 3 — KAPTUR (générateur de créas / capture)               -->
@@ -1961,10 +2043,11 @@
       <button class="btn btn-primary" id="exportAllBtn" style="width:100%;background:var(--accent);color:white;">Exporter tous les formats utilisés</button>
       <button class="btn btn-secondary" id="resetSessionBtn" style="width:100%;margin-top:6px;margin-bottom:14px;">Réinitialiser la session</button>
 
+      <div class="kaptur-backup"><p id="kaptur-save-status" role="status">Chargement de la session…</p><div class="backup-actions"><button type="button" class="btn btn-secondary" id="kaptur-export-session">Exporter la session</button><button type="button" class="btn btn-secondary" id="kaptur-import-session">Importer une session</button></div><input type="file" id="kaptur-session-file" accept=".json,application/json" hidden></div>
       <p class="section-title">Import global</p>
       <div class="upload-zone" id="globalUploadZone">
         <strong>Glisse plusieurs visuels ici</strong>
-        <span>Attribution auto selon les dimensions source.</span>
+        <span>Choisissez les emplacements avant de valider l’import.</span>
         <input id="globalUploadInput" type="file" accept="image/*" multiple hidden>
       </div>
 
@@ -2035,8 +2118,9 @@
             <button class="btn btn-dark" id="downloadBtn">↓ Télécharger</button>
           </div>
           <div class="canvas-shell">
-            <canvas id="previewCanvas"></canvas>
+            <p id="kaptur-preview-error" role="status"></p><canvas id="previewCanvas"></canvas>
           </div>
+          <div class="kaptur-capture-transfer"><span class="note">Renommer la capture de présentation</span><div id="kaptur-transfer"></div></div>
         </section>
     </main>
 
@@ -2068,8 +2152,9 @@
       <span class="stat-label">Non conformes</span>
       <span class="stat-value" id="stat-nok">—</span>
     </div>
+    <div class="stat-card" id="card-unknown"><span class="stat-label">Non analysés</span><span class="stat-value" id="stat-unknown">—</span></div>
     <div class="stat-card" id="card-rate">
-      <span class="stat-label">Taux de conformité</span>
+      <span class="stat-label" title="Sur les fichiers analysés uniquement">Taux de conformité analysé</span>
       <span class="stat-value" id="stat-rate">—</span>
     </div>
     <div class="stat-card stat-mismatch" id="card-mismatch">
@@ -2094,6 +2179,7 @@
         <option value="ALL">Tous</option>
         <option value="OK">Conformes</option>
         <option value="NOK">Non conformes</option>
+        <option value="UNKNOWN">Non analysés</option>
       </select>
     </div>
     <div class="filter-sep"></div>
@@ -2123,6 +2209,7 @@
     <input type="file" id="file-input" multiple accept="image/*,.html,.gif">
   </div>
 
+  <div class="cp-transfer-summary"><span>Transférer les images affichées (fichiers corrigés inclus)</span><div id="checkpub-transfer"></div></div>
   <!-- TABLE -->
   <div class="table-wrapper">
     <div class="table-empty" id="empty-state">
@@ -2229,9 +2316,70 @@
 </div>
 
 <script>
+/* V4 — transferts locaux de fichiers entre outils. */
+window.AdOpsBridge = (() => {
+  const receivers = new Map();
+  const panels = { checkpub: 'panel-checkpub', resize: 'panel-resize', kaptur: 'panel-kaptur', renamer: 'panel-renamer' };
+  const labels = { checkpub: 'CheckPub', resize: 'Resize', kaptur: 'Kaptur', renamer: 'Renommage' };
+  function message(text, error = false) {
+    const region = document.getElementById('adops-transfer-status');
+    region.textContent = text;
+    region.classList.toggle('is-error', error);
+    region.hidden = !text;
+  }
+  async function send(target, files, metadata = {}) {
+    const batch = Array.from(files || []);
+    if (!batch.length) { message('Aucun fichier prêt à transférer.', true); return false; }
+    if (!receivers.has(target)) { message('Cet outil est en cours de chargement. Réessayez dans un instant.', true); return false; }
+    try {
+      document.querySelector(`#toolTabs [data-panel="${panels[target]}"]`).click();
+      const count = await receivers.get(target)(batch, metadata);
+      if (count !== false) message(`${typeof count === 'number' ? count : batch.length} fichier(s) reçu(s) dans ${labels[target]}.`);
+      return count !== false;
+    } catch (error) { message(error.message || 'Le transfert a échoué.', true); return false; }
+  }
+  function mount(id, provider, targets) {
+    const root = document.getElementById(id);
+    if (!root) return;
+    root.classList.add('adops-transfer');
+    const select = document.createElement('select');
+    select.setAttribute('aria-label', 'Outil destinataire');
+    for (const target of targets) {
+      const option = document.createElement('option'); option.value = target; option.textContent = labels[target]; select.appendChild(option);
+    }
+    const button = document.createElement('button'); button.type = 'button'; button.className = 'btn'; button.textContent = 'Envoyer vers';
+    button.addEventListener('click', async () => {
+      button.disabled = true;
+      try { const value = await provider(); await send(select.value, value.files || value, value.metadata || {}); }
+      catch (error) { message(error.message || 'Aucun fichier prêt à transférer.', true); }
+      finally { button.disabled = false; }
+    });
+    root.append(button, select);
+  }
+  function download(blob, name) {
+    const url = URL.createObjectURL(blob), link = document.createElement('a');
+    link.href = url; link.download = name; document.body.appendChild(link); link.click(); link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+  }
+  function readImage(file) {
+    return new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(file), image = new Image();
+      const finish = (error) => { clearTimeout(timer); URL.revokeObjectURL(url); if (error) reject(error); else resolve(image); };
+      const timer = setTimeout(() => finish(new Error('Lecture de l’image trop longue.')), 20000);
+      image.onload = () => finish(); image.onerror = () => finish(new Error('Image illisible.')); image.src = url;
+    });
+  }
+  function encode(canvas, mime, quality) {
+    return new Promise((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('Encodage impossible.')), mime, quality));
+  }
+  return { register: (name, handler) => receivers.set(name, handler), send, mount, message, download, readImage, encode };
+})();
+
+</script>
+<script>
 /* ============================================================ */
 /* TAB SWITCHING                                                 */
-/* Les 4 outils sont désormais tous intégrés nativement dans      */
+/* Les 6 outils sont désormais tous intégrés nativement dans      */
 /* cette page (aucune iframe). Kaptur reste néanmoins dépendant   */
 /* du dossier fonts/ (via @font-face à chemins relatifs), qui     */
 /* doit rester à côté de ce fichier index.html :                  */
@@ -2245,7 +2393,9 @@
     'panel-resize': "300 Ko max · Web &amp; App",
     'panel-banner': "Export PNG · JPG · GIF",
     'panel-kaptur': "Capture d'écran",
-    'panel-checkpub': "Contrôle conformité"
+    'panel-checkpub': "Contrôle conformité",
+    'panel-html': "Conversion texte vers HTML",
+    'panel-renamer': "Renommage en lot · 100 % local"
   };
 
   tabs.forEach(tab => {
@@ -2262,221 +2412,272 @@
 </script>
 
 <script>
+/* TEXTE HTML — édition, nettoyage et sauvegarde indépendants des autres outils. */
+(() => {
+  const $ = id => document.getElementById(id);
+  const editor = $('html-editor'), output = $('html-output'), note = $('html-copy-note');
+  const preview = $('html-preview'), storageKey = 'adops_html_draft_v2';
+  let savedRange = null;
+  const escape = value => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  function safeUrl(value) {
+    let url = String(value || '').trim();
+    if (!url || /[\u0000-\u0020\u007f]/.test(url)) return '';
+    if (!/^[a-z][a-z0-9+.-]*:/i.test(url)) url = 'https://' + url;
+    try {
+      const parsed = new URL(url);
+      if (!['http:', 'https:', 'mailto:', 'tel:'].includes(parsed.protocol)) return '';
+      if (['http:', 'https:'].includes(parsed.protocol) && (!parsed.hostname || parsed.username || parsed.password)) return '';
+      if (!parsed.pathname && ['mailto:', 'tel:'].includes(parsed.protocol)) return '';
+      return url;
+    } catch { return ''; }
+  }
+  function children(parent) {
+    let html = '';
+    Array.from(parent.childNodes).forEach((node, index) => {
+      const block = node.nodeType === 1 && /^(DIV|P|LI|H[1-6]|BLOCKQUOTE)$/.test(node.tagName);
+      const previous = node.previousSibling;
+      const previousBlock = previous?.nodeType === 1 && /^(DIV|P|LI|H[1-6]|BLOCKQUOTE)$/.test(previous.tagName);
+      if (index && (block || previousBlock) && !html.endsWith('<br>')) html += '<br>';
+      html += serialize(node);
+    });
+    return html;
+  }
+  function serialize(node) {
+    if (node.nodeType === 3) return escape(node.nodeValue);
+    if (node.nodeType !== 1) return '';
+    const tag = node.tagName.toLowerCase();
+    if (/^(script|style|iframe|object|embed|svg|math|template|noscript)$/.test(tag)) return '';
+    if (tag === 'br') return '<br>';
+    let content = children(node);
+    if (tag === 'b' || tag === 'strong' || /^(bold|bolder|[6-9]00)$/.test(node.style.fontWeight)) content = '<b>' + content + '</b>';
+    if (tag === 'i' || tag === 'em' || /^(italic|oblique)/.test(node.style.fontStyle)) content = '<i>' + content + '</i>';
+    if (tag === 'a') {
+      const href = safeUrl(node.getAttribute('href'));
+      if (href) content = '<a href="' + escape(href) + '" target="_blank" rel="noopener noreferrer">' + content + '</a>';
+    }
+    return content;
+  }
+  function clean(html) { return children(new DOMParser().parseFromString(html, 'text/html').body); }
+  function sync(save = true) {
+    const html = children(editor);
+    output.textContent = html || 'Le code HTML apparaîtra ici.';
+    if (preview.classList.contains('is-open')) preview.innerHTML = html;
+    if (save) {
+      try { localStorage.setItem(storageKey, html); $('html-save-state').textContent = 'Brouillon enregistré sur ce navigateur'; }
+      catch { $('html-save-state').textContent = 'Sauvegarde indisponible — copiez votre HTML avant de quitter'; }
+    }
+    return html;
+  }
+  function remember() {
+    const selection = window.getSelection();
+    if (selection?.rangeCount && editor.contains(selection.anchorNode) && editor.contains(selection.focusNode)) savedRange = selection.getRangeAt(0).cloneRange();
+  }
+  function restore() {
+    editor.focus();
+    if (savedRange && editor.contains(savedRange.commonAncestorContainer)) {
+      const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(savedRange);
+    }
+  }
+  function updateButtons() {
+    ['bold', 'italic'].forEach(command => {
+      const active = editor.contains(window.getSelection()?.anchorNode) && document.queryCommandState(command);
+      $('html-' + command).classList.toggle('is-active', !!active);
+      $('html-' + command).setAttribute('aria-pressed', String(!!active));
+    });
+  }
+  document.addEventListener('selectionchange', () => { remember(); updateButtons(); });
+  ['bold', 'italic'].forEach(command => {
+    $('html-' + command).addEventListener('mousedown', event => event.preventDefault());
+    $('html-' + command).addEventListener('click', () => { restore(); document.execCommand(command, false); remember(); sync(); updateButtons(); });
+  });
+  const dialog = $('html-link-dialog'), input = $('html-link-url');
+  let currentLink = null;
+  $('html-link').addEventListener('mousedown', event => event.preventDefault());
+  $('html-link').addEventListener('click', () => {
+    restore(); remember();
+    let anchor = window.getSelection()?.anchorNode;
+    currentLink = (anchor?.nodeType === 1 ? anchor : anchor?.parentElement)?.closest('a');
+    if (currentLink && !editor.contains(currentLink)) currentLink = null;
+    if (!savedRange || (savedRange.collapsed && !currentLink)) { note.textContent = 'Sélectionnez le texte du lien ou placez le curseur dans un lien existant.'; return; }
+    input.value = currentLink?.getAttribute('href') || '';
+    $('html-link-error').textContent = '';
+    $('html-link-remove').hidden = !currentLink;
+    dialog.showModal(); input.focus();
+  });
+  $('html-link-form').addEventListener('submit', event => {
+    event.preventDefault();
+    const url = safeUrl(input.value);
+    if (!url) { $('html-link-error').textContent = 'Adresse invalide. Protocoles autorisés : https, http, mailto et tel.'; input.focus(); return; }
+    dialog.close(); restore();
+    if (currentLink) currentLink.setAttribute('href', url);
+    else document.execCommand('createLink', false, url);
+    editor.querySelectorAll('a').forEach(a => { a.target = '_blank'; a.rel = 'noopener noreferrer'; });
+    sync(); note.textContent = 'Lien enregistré.';
+  });
+  $('html-link-cancel').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', restore);
+  $('html-link-remove').addEventListener('click', () => {
+    if (currentLink) currentLink.replaceWith(...currentLink.childNodes);
+    savedRange = null; dialog.close(); sync(); note.textContent = 'Lien retiré, texte conservé.';
+  });
+  editor.addEventListener('input', () => { sync(); note.textContent = ''; });
+  editor.addEventListener('paste', event => {
+    const clipboard = event.clipboardData; if (!clipboard) return;
+    event.preventDefault();
+    const rich = clipboard.getData('text/html');
+    const html = rich ? clean(rich) : escape(clipboard.getData('text/plain')).replace(/\r\n?|\n/g, '<br>');
+    restore(); document.execCommand('insertHTML', false, html); remember(); sync();
+  });
+  editor.addEventListener('drop', event => { event.preventDefault(); note.textContent = 'Utilisez le copier-coller pour insérer du texte.'; });
+  $('html-transform').addEventListener('click', () => { sync(); note.textContent = 'HTML actualisé.'; });
+  $('html-preview-btn').addEventListener('click', () => {
+    preview.classList.toggle('is-open'); sync(false);
+    $('html-preview-btn').setAttribute('aria-expanded', String(preview.classList.contains('is-open')));
+  });
+  $('html-clear').addEventListener('click', () => {
+    if (editor.textContent && !confirm('Effacer le texte et son brouillon enregistré ?')) return;
+    editor.innerHTML = ''; savedRange = null; sync(); note.textContent = 'Texte effacé.'; editor.focus();
+  });
+  $('html-copy').addEventListener('click', async () => {
+    const html = sync(); if (!html) { note.textContent = 'Ajoutez du texte à copier.'; return; }
+    try { await navigator.clipboard.writeText(html); note.textContent = 'HTML copié.'; }
+    catch {
+      const range = document.createRange(); range.selectNodeContents(output);
+      const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+      note.textContent = 'HTML sélectionné : utilisez Ctrl+C (ou Cmd+C).';
+    }
+  });
+  try {
+    const draft = localStorage.getItem(storageKey);
+    if (draft) { editor.innerHTML = clean(draft); $('html-save-state').textContent = 'Brouillon restauré'; }
+  } catch { $('html-save-state').textContent = 'Sauvegarde indisponible sur ce navigateur'; }
+  sync(false);
+})();
 /* ============================================================ */
 /* OUTIL 1 — REDIMENSIONNEMENT D'IMAGE                            */
 /* ============================================================ */
+/* V4 — Resize : rendu indépendant, recadrage et aperçu du fichier encodé. */
 (() => {
-  const elFile      = document.getElementById('file');
-  const dropzone    = document.getElementById('dropzone');
-  const elW         = document.getElementById('w');
-  const elH         = document.getElementById('h');
-  const elLock      = document.getElementById('lock');
-  const elFormat    = document.getElementById('format');
-  const elQ         = document.getElementById('q');
-  const elQVal      = document.getElementById('q-val');
-  const btnRender   = document.getElementById('btnRender');
-  const btnDownload = document.getElementById('btnDownload');
-  const statusBar   = document.getElementById('statusBar');
-  const canvas      = document.getElementById('c');
-  const cOrig       = document.getElementById('cOrig');
-  const cOut        = document.getElementById('cOut');
-  const compareWrap = document.getElementById('compareWrap');
-  const sLine       = document.getElementById('sLine');
-  const sHandle     = document.getElementById('sHandle');
-  const hint        = document.getElementById('hint');
-  const ratioBadge  = document.getElementById('ratio-badge');
-  const viewTabs    = document.getElementById('viewTabs');
-  const previewArea = document.getElementById('previewArea');
-  const respHint    = document.getElementById('resp-hint');
-  const ctx         = canvas.getContext('2d', { alpha: true });
-
-  let img = new Image();
-  let loaded = false, naturalW = 0, naturalH = 0;
-  let lastBlob = null, origSize = 0;
-  let activeTab = 'output';
-  let currentMaxKb = 300, currentFmt = null, currentResp = null;
-
-  function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
-  function getRatio(w, h) { const d = gcd(w, h); return `${w/d}:${h/d}`; }
-  function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }
-
-  elQ.addEventListener('input', () => { elQVal.textContent = elQ.value + '%'; if (loaded) render(); });
-  elFormat.addEventListener('change', () => { if (loaded) render(); });
-
-  function updateWithLock(changed) {
-    if (!loaded || !elLock.checked) return;
-    const ratio = naturalW / naturalH;
-    const wVal = parseInt(elW.value, 10), hVal = parseInt(elH.value, 10);
-    if (changed === 'w' && Number.isFinite(wVal) && wVal > 0) elH.value = Math.round(wVal / ratio);
-    if (changed === 'h' && Number.isFinite(hVal) && hVal > 0) elW.value = Math.round(hVal * ratio);
-    updateRatioBadge();
-  }
-
-  function updateRatioBadge() {
-    const w = parseInt(elW.value, 10), h = parseInt(elH.value, 10);
-    if (w > 0 && h > 0) {
-      ratioBadge.textContent = getRatio(w, h);
-      ratioBadge.style.display = 'inline-flex';
+  const $ = id => document.getElementById(id), bridge = window.AdOpsBridge;
+  const canvas = $('c'), ctx = canvas.getContext('2d'), cOrig = $('cOrig'), cOut = $('cOut');
+  const elW = $('w'), elH = $('h'), elQ = $('q'), elFormat = $('format'), elLock = $('lock');
+  const mode = $('resize-fit'), bg = $('resize-bg'), cropX = $('resize-crop-x'), cropY = $('resize-crop-y');
+  let source = null, sourceFile = null, result = null, generation = 0, loadGeneration = 0, pending = false;
+  let activeTab = 'output', formatLabel = '', split = 0.5;
+  const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
+  function invalidate() { generation++; result = null; $('btnDownload').disabled = true; }
+  function ratioLabel() {
+    const gcd = (a,b) => b ? gcd(b,a%b) : a;
+    const w = +elW.value, h = +elH.value;
+    if (w > 0 && h > 0 && Number.isInteger(w) && Number.isInteger(h)) {
+      const d = gcd(w,h); $('ratio-badge').textContent = `${w/d}:${h/d}`; $('ratio-badge').style.display = 'inline-flex';
     }
   }
-
-  function setStatus(kb, origKb, w, h, fmt) {
-    const max = currentMaxKb;
-    const pct = max ? clamp(kb / max, 0, 1) : 0;
-    const over = max && kb > max;
-    const saved = origKb > 0 ? Math.round((1 - kb / origKb) * 100) : null;
-    const barColor = over ? '#e2413c' : pct > 0.8 ? '#e0a428' : '#1857E8';
-    const badgeCls = over ? 'danger' : (saved !== null && saved < 0) ? 'warn' : 'ok';
-    const badgeText = saved !== null ? (saved > 0 ? `−${saved}%` : `+${Math.abs(saved)}%`) : '';
-    const ext = fmt.replace('image/', '').toUpperCase();
-    let fmtStr = currentFmt ? `<span style="color:var(--blue)">${currentFmt}</span> · ` : '';
-
-    statusBar.innerHTML = `
-      <div class="status-row">
-        <span class="status-name">${fmtStr}${w}×${h} · ${ext}</span>
-        ${badgeText ? `<span class="compression-badge ${badgeCls}">${badgeText}</span>` : ''}
-      </div>
-      <div class="weight-bar-wrap">
-        <div class="weight-bar-bg">
-          <div class="weight-bar-fill" id="wbar" style="width:${Math.round(pct*100)}%; background:${barColor};"></div>
-        </div>
-        <span class="weight-val">${kb} Ko${max ? ` / ${max}` : ''}</span>
-      </div>
-      ${over ? `<span style="color:#c0332f; font-family:var(--mono); font-size:10px;">⚠ Dépasse la limite de ${max} Ko</span>` : ''}
-    `;
-  }
-
-  function render() {
-    if (!loaded) return;
-    const w = parseInt(elW.value, 10), h = parseInt(elH.value, 10);
-    if (!Number.isFinite(w) || !Number.isFinite(h) || w <= 0 || h <= 0) {
-      statusBar.innerHTML = '<span style="color:#c0332f; font-family:var(--mono); font-size:11px;">Dimensions invalides</span>';
-      return;
+  function drawSource(target, config) {
+    const { w, h, fit, x, y, background, mime } = config;
+    target.width = w; target.height = h;
+    const context = target.getContext('2d'); context.clearRect(0,0,w,h);
+    context.imageSmoothingEnabled = true; context.imageSmoothingQuality = 'high';
+    if (fit === 'contain' || mime === 'image/jpeg') { context.fillStyle = background; context.fillRect(0,0,w,h); }
+    const iw = source.naturalWidth, ih = source.naturalHeight;
+    if (fit === 'stretch') context.drawImage(source, 0, 0, w, h);
+    else {
+      const scale = fit === 'cover' ? Math.max(w/iw, h/ih) : Math.min(w/iw, h/ih);
+      const dw = iw * scale, dh = ih * scale;
+      context.drawImage(source, (w-dw)*(fit === 'cover' ? x : .5), (h-dh)*(fit === 'cover' ? y : .5), dw, dh);
     }
-    canvas.width = w; canvas.height = h;
-    ctx.clearRect(0, 0, w, h);
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(img, 0, 0, w, h);
-    const fmt = elFormat.value;
-    const quality = clamp(parseInt(elQ.value, 10) / 100, 0, 1);
-    canvas.toBlob((blob) => {
-      if (!blob) { statusBar.innerHTML = '<span style="color:#c0332f; font-family:var(--mono); font-size:11px;">Erreur export</span>'; return; }
-      lastBlob = blob;
-      btnDownload.disabled = false;
-      const kb = Math.round(blob.size / 1024);
-      const origKb = Math.round(origSize / 1024);
-      setStatus(kb, origKb, w, h, fmt);
-      if (activeTab === 'output') showCanvas(); else buildCompare();
-    }, fmt, fmt !== 'image/png' ? quality : undefined);
   }
-
-  function showCanvas() {
-    hint.style.display = 'none'; compareWrap.style.display = 'none'; canvas.style.display = 'block';
+  function setSplit(value) {
+    split = clamp(value,0,1); cOut.style.clipPath = `inset(0 ${(1-split)*100}% 0 0)`;
+    $('sLine').style.left = `${split*100}%`; $('sHandle').style.left = `${split*100}%`;
   }
-
-  function buildCompare() {
-    hint.style.display = 'none'; canvas.style.display = 'none'; compareWrap.style.display = 'block';
-    const w = canvas.width, h = canvas.height;
-    const maxW = previewArea.clientWidth - 48;
-    const scale = Math.min(1, maxW / w);
-    const dw = Math.round(w * scale), dh = Math.round(h * scale);
-    cOrig.width = w; cOrig.height = h;
-    cOrig.style.cssText = `width:${dw}px;height:${dh}px;max-width:100%;`;
-    cOrig.getContext('2d').drawImage(img, 0, 0, w, h);
-    cOut.width = w; cOut.height = h;
-    cOut.style.cssText = `position:absolute;top:0;left:0;width:${dw}px;height:${dh}px;max-width:100%;clip-path:inset(0 50% 0 0);`;
-    cOut.getContext('2d').drawImage(canvas, 0, 0);
-    compareWrap.style.height = dh + 'px';
-    setSplit(0.5);
+  function show() {
+    if (!result) return;
+    $('hint').style.display = 'none';
+    canvas.style.display = activeTab === 'output' ? 'block' : 'none';
+    $('compareWrap').style.display = activeTab === 'compare' ? 'block' : 'none';
+    if (activeTab === 'compare') {
+      const { before, after, w, h } = result;
+      cOrig.width = cOut.width = w; cOrig.height = cOut.height = h;
+      cOrig.getContext('2d').drawImage(before,0,0); cOut.getContext('2d').drawImage(after,0,0);
+      const scale = Math.min(1, Math.max(1,$('previewArea').clientWidth-48)/w, 600/h);
+      $('compareWrap').style.width = `${Math.round(w*scale)}px`;
+      $('compareWrap').style.height = `${Math.round(h*scale)}px`;
+      cOrig.style.cssText = 'width:100%;height:100%;max-height:none;max-width:none;';
+      cOut.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;max-height:none;max-width:none;';
+      setSplit(split);
+    }
   }
-
-  function setSplit(pct) {
-    cOut.style.clipPath = `inset(0 ${Math.round((1 - pct) * 100)}% 0 0)`;
-    sLine.style.left = Math.round(pct * 100) + '%';
-    sHandle.style.left = Math.round(pct * 100) + '%';
+  async function render() {
+    invalidate(); const request = generation;
+    if (!source) return;
+    const w = Number(elW.value), h = Number(elH.value);
+    if (!Number.isInteger(w) || !Number.isInteger(h) || w<1 || h<1 || w>8192 || h>8192 || w*h>24000000) {
+      $('statusBar').textContent = 'Dimensions invalides : 1 à 8 192 px, dans la limite de 24 millions de pixels.'; return;
+    }
+    const config = { w, h, fit:mode.value, x:+cropX.value/100, y:+cropY.value/100, background:bg.value, mime:elFormat.value };
+    const quality = clamp(+elQ.value/100,0,1);
+    pending = true; $('statusBar').textContent = 'Génération du fichier…';
+    try {
+      const before = document.createElement('canvas'); drawSource(before,config);
+      const blob = await bridge.encode(before, config.mime, config.mime==='image/png'?undefined:quality);
+      const after = await bridge.readImage(blob);
+      if (request !== generation) return;
+      const ext = blob.type.split('/')[1].replace('jpeg','jpg');
+      const base = (sourceFile.name.replace(/\.[^.]+$/,'') || 'visuel').replace(/[<>:"/\\|?*\u0000-\u001f]/g,'_');
+      result = { blob, before, after, w, h, name:`${base}_${w}x${h}.${ext}` };
+      canvas.width=w; canvas.height=h; ctx.clearRect(0,0,w,h); ctx.drawImage(after,0,0);
+      $('btnDownload').disabled=false;
+      const over=blob.size>300*1024, up=w>source.naturalWidth||h>source.naturalHeight;
+      $('statusBar').textContent = `${w}×${h} · ${ext.toUpperCase()} · ${(blob.size/1024).toFixed(1)} Ko / 300 Ko${over?' — poids dépassé':''}${up?' — agrandissement de la source':''}${config.fit==='stretch'?' — étirement choisi':''}`;
+      show();
+    } catch(error) { if(request===generation) $('statusBar').textContent=error.message; }
+    finally { if(request===generation) pending=false; }
   }
-
-  compareWrap.addEventListener('mousemove', (e) => {
-    const r = compareWrap.getBoundingClientRect();
-    setSplit(clamp((e.clientX - r.left) / r.width, 0, 1));
-  });
-  compareWrap.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-    const r = compareWrap.getBoundingClientRect();
-    setSplit(clamp((e.touches[0].clientX - r.left) / r.width, 0, 1));
-  }, { passive: false });
-
-  viewTabs.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-tab]');
-    if (!btn) return;
-    viewTabs.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    activeTab = btn.dataset.tab;
-    if (!loaded || !lastBlob) return;
-    if (activeTab === 'output') showCanvas(); else buildCompare();
-  });
-
-  document.querySelectorAll('#panel-resize .preset-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      elLock.checked = false;
-      elW.value = btn.dataset.w; elH.value = btn.dataset.h;
-      currentMaxKb = 300;
-      currentFmt = btn.dataset.fmt || null;
-      currentResp = btn.dataset.r || null;
-      respHint.style.display = currentResp ? 'block' : 'none';
-      if (currentResp) respHint.textContent = '↳ Responsive : ' + currentResp;
-      updateRatioBadge();
-      if (loaded) render();
-    });
-  });
-
-  function loadFile(file) {
-    if (!file) return;
-    origSize = file.size;
-    const url = URL.createObjectURL(file);
-    img = new Image();
-    img.onload = () => {
-      loaded = true;
-      naturalW = img.naturalWidth; naturalH = img.naturalHeight;
-      elW.value = naturalW; elH.value = naturalH;
-      updateRatioBadge();
-      btnRender.disabled = false; btnDownload.disabled = true; lastBlob = null;
-      URL.revokeObjectURL(url);
-      render();
-    };
-    img.onerror = () => {
-      loaded = false;
-      statusBar.innerHTML = '<span style="color:#c0332f; font-family:var(--mono); font-size:11px;">Impossible de charger l\'image</span>';
-      URL.revokeObjectURL(url);
-    };
-    img.src = url;
+  function refreshOptions() {
+    $('resize-crop-controls').hidden=mode.value!=='cover';
+    $('resize-bg-field').hidden=mode.value!=='contain' && elFormat.value!=='image/jpeg';
+    elQ.disabled=elFormat.value==='image/png'; $('q-val').textContent=elQ.disabled?'Sans perte':`${elQ.value}%`;
+    ratioLabel();
   }
-
-  dropzone.addEventListener('click', () => elFile.click());
-  elFile.addEventListener('change', (e) => loadFile(e.target.files?.[0]));
-  dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('drag-over'); });
-  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
-  dropzone.addEventListener('drop', (e) => {
-    e.preventDefault(); dropzone.classList.remove('drag-over');
-    loadFile(e.dataTransfer.files?.[0]);
-  });
-
-  elW.addEventListener('input', () => updateWithLock('w'));
-  elH.addEventListener('input', () => updateWithLock('h'));
-  btnRender.addEventListener('click', render);
-
-  btnDownload.addEventListener('click', () => {
-    if (!lastBlob) return;
-    const ext = elFormat.value.split('/')[1].replace('jpeg', 'jpg');
-    const slug = currentFmt ? currentFmt.replace(/[^a-z0-9]/gi, '_').toLowerCase() : 'resized';
-    const a = document.createElement('a');
-    const url = URL.createObjectURL(lastBlob);
-    a.href = url; a.download = `${slug}_${canvas.width}x${canvas.height}.${ext}`;
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1500);
-  });
+  async function loadFile(file) {
+    if(!file)return false;
+    const request=++loadGeneration; invalidate(); source=null; sourceFile=null;
+    canvas.style.display='none'; $('compareWrap').style.display='none'; $('hint').style.display='flex';
+    $('btnRender').disabled=true; $('statusBar').textContent='Lecture de l’image…';
+    try {
+      const image=await bridge.readImage(file); if(request!==loadGeneration)return false;
+      source=image; sourceFile=file; elW.value=image.naturalWidth; elH.value=image.naturalHeight;
+      formatLabel=''; elLock.checked=true; cropX.value=cropY.value=50; $('btnRender').disabled=false;
+      $('resize-source-note').textContent=/gif/i.test(file.type)?'Le redimensionnement produit une image fixe ; l’animation GIF n’est pas conservée.':'';
+      refreshOptions(); await render(); return true;
+    } catch(error) { if(request===loadGeneration)$('statusBar').textContent=error.message; return false; }
+  }
+  function changeDimensions(which) {
+    if(source && elLock.checked){ const ratio=source.naturalWidth/source.naturalHeight; if(which==='w')elH.value=Math.max(1,Math.round(+elW.value/ratio)); else elW.value=Math.max(1,Math.round(+elH.value*ratio)); }
+    refreshOptions(); render();
+  }
+  elW.addEventListener('input',()=>changeDimensions('w')); elH.addEventListener('input',()=>changeDimensions('h'));
+  [elQ,elFormat,mode,bg,cropX,cropY].forEach(input=>input.addEventListener('input',()=>{refreshOptions();render();}));
+  $('btnRender').addEventListener('click',render);
+  $('btnDownload').addEventListener('click',()=>{if(result&&!pending)bridge.download(result.blob,result.name);});
+  document.querySelectorAll('#panel-resize .preset-btn').forEach(button=>button.addEventListener('click',()=>{
+    elLock.checked=false; elW.value=button.dataset.w;elH.value=button.dataset.h;formatLabel=button.dataset.fmt||'';
+    const hint=button.dataset.r; $('resp-hint').style.display=hint?'block':'none';$('resp-hint').textContent=hint?'Responsive : '+hint:'';
+    refreshOptions();render();
+  }));
+  $('file').addEventListener('change',event=>{loadFile(event.target.files[0]);event.target.value='';});
+  $('dropzone').addEventListener('click',event=>{if(event.target!==$('file'))$('file').click();});
+  $('dropzone').addEventListener('dragover',event=>{event.preventDefault();$('dropzone').classList.add('drag-over');});
+  $('dropzone').addEventListener('dragleave',()=>$('dropzone').classList.remove('drag-over'));
+  $('dropzone').addEventListener('drop',event=>{event.preventDefault();$('dropzone').classList.remove('drag-over');loadFile(event.dataTransfer.files[0]);});
+  $('viewTabs').addEventListener('click',event=>{const button=event.target.closest('[data-tab]');if(!button)return;activeTab=button.dataset.tab;$('viewTabs').querySelectorAll('.view-tab').forEach(tab=>tab.classList.toggle('active',tab===button));show();});
+  $('compareWrap').addEventListener('pointermove',event=>{const rect=$('compareWrap').getBoundingClientRect();setSplit((event.clientX-rect.left)/rect.width);});
+  bridge.register('resize',async files=>{if(files.length!==1)throw Error('Resize accepte un seul fichier à la fois. Utilisez le bouton de la ligne concernée.');return await loadFile(files[0])?1:false;});
+  bridge.mount('resize-transfer',()=>{if(!result||pending)throw Error('Attendez la génération d’un résultat valide.');return [new File([result.blob],result.name,{type:result.blob.type})];},['checkpub','kaptur','renamer']);
+  refreshOptions();
 })();
+
 </script>
 
 <script>
@@ -2528,6 +2729,8 @@
     $("bn-yValue").textContent = `${controls.yPos.value}%`;
     $("bn-qualityValue").textContent = `${controls.jpgQuality.value}%`;
     $("bn-dimensionsLabel").textContent = `${canvas.width} × ${canvas.height} px`;
+    const presetValue = `${canvas.width}x${canvas.height}`;
+    $("bn-preset").value = Array.from($("bn-preset").options).some(option => option.value === presetValue) ? presetValue : 'custom';
   }
 
   function resizeCanvas() {
@@ -2637,6 +2840,19 @@
     ctx.shadowOffsetY = 0;
   }
 
+  $("bn-preset").addEventListener("change", event => {
+    if (event.target.value === 'custom') return;
+    const [width, height] = event.target.value.split('x');
+    controls.width.value = width;
+    controls.height.value = height;
+    render();
+  });
+  $("bn-center").addEventListener("click", () => {
+    controls.xPos.value = 50;
+    controls.yPos.value = 50;
+    render();
+  });
+
   Object.values(controls).forEach((control) => {
     control.addEventListener("input", render);
     control.addEventListener("change", render);
@@ -2660,6 +2876,11 @@
     link.click();
     link.remove();
   }
+
+  window.AdOpsBridge.mount('banner-transfer',async()=>{
+    render();const blob=await window.AdOpsBridge.encode(canvas,'image/png');
+    return [new File([blob],`${sanitizeFileName(controls.fileName.value)}.png`,{type:'image/png'})];
+  },['checkpub','resize','kaptur','renamer']);
 
   $("bn-downloadPng").addEventListener("click", () => {
     try {
@@ -2894,486 +3115,134 @@ const specFormats = [
   { tailles: ["1245x700"],nom: "UNE",      context: "WEB", formats: ["jpg","png","gif"], poidsMax: 300 },
 ];
 
+// V4 : le tableau, les compteurs, les transferts et le CSV partagent le même état.
 let allRows = [];
-let stats = { total: 0, ok: 0, nok: 0, mismatch: 0 };
-let mismatchFiles = [];
-let pendingCount = 0;
-let batchSize = 0;
-let rowIdCounter = 0;
-const fileStore = {};
-
-const dropZone    = document.getElementById('drop-zone');
-const fileInput   = document.getElementById('file-input');
-const resultBody  = document.getElementById('result-body');
-const resultTable = document.getElementById('result-table');
-const emptyState  = document.getElementById('empty-state');
-const deviceFilter= document.getElementById('deviceFilter');
-const statusFilter= document.getElementById('statusFilter');
-
-// Drag & drop
-// dragover bulle depuis les enfants → toujours déclenché tant qu'on est dans la zone
-// dragleave + relatedTarget → détecte le vrai départ de la zone
-document.addEventListener('dragover', e => e.preventDefault());
-document.addEventListener('drop',     e => e.preventDefault());
-
-dropZone.addEventListener('dragover', e => {
-  e.preventDefault();
-  e.dataTransfer.dropEffect = 'copy';
-  dropZone.classList.add('hover');
+let stats = { total:0, ok:0, nok:0, unknown:0, mismatch:0 };
+let mismatchFiles = [], rowIdCounter = 0, checkGeneration = 0, pendingCount = 0;
+const dropZone = document.getElementById('drop-zone'), fileInput = document.getElementById('file-input');
+const resultBody = document.getElementById('result-body'), resultTable = document.getElementById('result-table'), emptyState = document.getElementById('empty-state');
+const deviceFilter = document.getElementById('deviceFilter'), statusFilter = document.getElementById('statusFilter');
+const bridgeCheck = window.AdOpsBridge;
+function escHtml(value) { return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function normalizedExt(file) { const ext=file.name.split('.').pop().toLowerCase();return ext==='jpeg'?'jpg':ext; }
+function analyseCheckRow(row) {
+  const { file,width,height } = row, ext=normalizedExt(file), key=width&&height?`${width}x${height}`:null;
+  row.ext=ext; row.mismatch=null; row.targetKo=null;
+  const knownSizes=[...new Set(specFormats.flatMap(f=>f.tailles))];
+  for(const size of knownSizes){
+    const [w,h]=size.split('x');
+    if(new RegExp('(?:^|[_\\-\\s.])'+w+'[xX]'+h+'(?:[_\\-\\s.]|$)').test(file.name)){
+      if(key && size!==key)row.mismatch={name:file.name,announced:size.replace('x','×'),real:key.replace('x','×')};
+      break;
+    }
+  }
+  row.matches=key?specFormats.filter(f=>f.tailles.includes(key)):[];
+  if(!key){row.status='UNKNOWN';row.detail='Non analysé : HTML ou fichier image illisible.';return;}
+  if(!row.matches.length){row.status='NOK';row.detail='Dimensions absentes du référentiel.';return;}
+  const valid=row.matches.filter(f=>f.formats.includes(ext)&&file.size<=f.poidsMax*1024);
+  row.validMatches=valid;
+  row.status=valid.length?'OK':'NOK';
+  row.detail=valid.length?'Conforme pour : '+valid.map(f=>`${f.nom} ${f.context}`).join(' ; '):row.matches.map(f=>`${f.nom} ${f.context} : ${[!f.formats.includes(ext)?'extension non autorisée':'',file.size>f.poidsMax*1024?`poids supérieur à ${f.poidsMax} Ko`:''].filter(Boolean).join(', ')}`).join(' ; ');
+  if(row.status==='NOK' && ['jpg','png'].includes(ext) && row.matches.every(f=>f.formats.includes(ext)&&file.size>f.poidsMax*1024))row.targetKo=Math.min(...row.matches.map(f=>f.poidsMax));
+}
+function checkVisible(row){return (deviceFilter.value==='ALL'||row.matches.some(f=>f.context===deviceFilter.value))&&(statusFilter.value==='ALL'||statusFilter.value===row.status);}
+function renderCheckRow(row){
+  const ok=row.status==='OK', unknown=row.status==='UNKNOWN';
+  const mismatch=row.mismatch?`<div class="badge-mismatch">Nom annoncé : ${escHtml(row.mismatch.announced)} · réel : ${escHtml(row.mismatch.real)}</div>`:'';
+  const targets=['resize','kaptur','renamer'].map(target=>`<button type="button" class="btn cp-small" data-transfer="${target}" data-id="${row.id}" ${row.busy||unknown?'disabled':''}>${{resize:'Resize',kaptur:'Kaptur',renamer:'Renommer'}[target]}</button>`).join('');
+  const compress=row.targetKo&&!row.busy?`<button class="btn-compress" type="button" data-compress="${row.id}">${row.ext==='png'?'Optimiser le PNG':'Compresser le JPG'} · ≤ ${row.targetKo} Ko</button>`:'';
+  const conversion=row.offerJpg&&!row.busy?`<button type="button" class="btn-compress" data-convert="${row.id}">Convertir en JPG · fond blanc</button>`:'';
+  const preview=row.previewUrl?`<div class="compress-preview-wrap"><img class="compress-preview-img" src="${row.previewUrl}" alt="Fichier corrigé"><button type="button" class="btn cp-small" data-download="${row.id}">Télécharger le fichier corrigé</button></div>`:'';
+  const correction=row.correction?`<div class="cp-meta">${escHtml(row.correction)} · original : ${escHtml(row.originalFile.name)}</div>`:'';
+  return `<tr id="${row.id}" class="row-${ok?'ok':unknown?'unknown':'nok'}" data-context="${row.matches.map(f=>f.context).join(',')}" data-status="${row.status}" ${checkVisible(row)?'':'style="display:none"'}>
+    <td><span class="file-name">${escHtml(row.file.name)}</span>${correction}</td><td><span class="dims">${row.width&&row.height?`${row.width}×${row.height}`:'—'}</span></td>
+    <td><span class="poids">${(row.file.size/1024).toFixed(1)} Ko</span></td><td><span class="fmt-pill">${escHtml(row.ext)}</span></td>
+    <td>${row.matches.map(f=>`<span class="badge ${f.context}">${escHtml(f.nom)} · ${f.context}</span>`).join('')||'—'}</td>
+    <td><div class="status-${ok?'ok':unknown?'unknown':'nok'}">${unknown?'Non analysé':ok?'Conforme':'Non conforme'}</div><div class="cp-meta">${escHtml(row.detail)}</div>${mismatch}
+    ${row.busy?'<p role="status">Traitement en cours…</p>':compress+conversion}${row.error?`<p class="compress-error">${escHtml(row.error)}</p>`:''}${preview}<div class="cp-transfers">${targets}</div></td></tr>`;
+}
+function updateStats(){
+  stats={total:allRows.length,ok:0,nok:0,unknown:0,mismatch:0};mismatchFiles=[];
+  for(const row of allRows){stats[row.status==='OK'?'ok':row.status==='NOK'?'nok':'unknown']++;if(row.mismatch)mismatchFiles.push(row.mismatch);}
+  stats.mismatch=mismatchFiles.length;
+  const set=(id,value)=>document.getElementById(id).textContent=value;
+  set('stat-total',stats.total);set('stat-ok',stats.ok);set('stat-nok',stats.nok);set('stat-unknown',stats.unknown);
+  set('stat-rate',stats.ok+stats.nok?`${Math.round(stats.ok/(stats.ok+stats.nok)*100)} %`:'—');set('stat-mismatch',stats.mismatch||'✓');
+  ['card-total','card-ok','card-nok','card-unknown','card-rate','card-mismatch'].forEach(id=>document.getElementById(id).classList.toggle('has-data',!!stats.total));
+}
+function renderTable(){
+  resultBody.innerHTML=allRows.map(renderCheckRow).join('');resultTable.style.display=allRows.length?'table':'none';emptyState.style.display=allRows.length?'none':'';
+  document.getElementById('btn-export').disabled=!allRows.length;document.getElementById('btn-reset').disabled=!allRows.length&&!pendingCount;updateStats();
+}
+function updateVisibility(){renderTable();}
+async function handleFiles(files){
+  const generation=checkGeneration,batch=Array.from(files);pendingCount+=batch.length;let added=0;
+  for(const file of batch){
+    let width=null,height=null;
+    if(!/\.html?$/i.test(file.name)){try{const image=await bridgeCheck.readImage(file);width=image.naturalWidth;height=image.naturalHeight;}catch{}}
+    if(generation!==checkGeneration)return false;
+    const row={id:'row-'+(++rowIdCounter),originalFile:file,file,width,height,busy:false,error:'',correction:'',previewUrl:null,offerJpg:false};
+    analyseCheckRow(row);allRows.push(row);pendingCount--;added++;renderTable();
+  }
+  if(generation===checkGeneration)showToast(`${added} fichier(s) reçu(s) · ${stats.unknown} non analysé(s).`);
+  return added;
+}
+function resetAll(){
+  if(allRows.length&&!confirm('Effacer les résultats et les fichiers corrigés de CheckPub ?'))return;
+  checkGeneration++;pendingCount=0;
+  allRows.forEach(row=>{if(row.previewUrl)URL.revokeObjectURL(row.previewUrl);});allRows=[];renderTable();
+}
+async function compressFile(id, convert=false){
+  const row=allRows.find(r=>r.id===id);if(!row||row.busy||!row.targetKo)return;
+  const generation=checkGeneration,target=row.targetKo*1024;row.busy=true;row.error='';renderTable();
+  try{
+    const image=await bridgeCheck.readImage(row.file),canvas=document.createElement('canvas');canvas.width=row.width;canvas.height=row.height;
+    const ctx=canvas.getContext('2d'),mime=convert?'image/jpeg':row.ext==='png'?'image/png':'image/jpeg';
+    if(convert){ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);}ctx.drawImage(image,0,0);
+    let best=null;
+    if(mime==='image/png'){
+      const blob=await bridgeCheck.encode(canvas,mime);if(blob.size<=target)best=blob;
+      else {row.offerJpg=true;throw Error('Le PNG reste trop lourd. La conversion JPG supprimera la transparence et utilisera un fond blanc.');}
+    }else{
+      const max=await bridgeCheck.encode(canvas,mime,.99);if(max.size<=target)best=max;
+      else {let lo=.05,hi=.99;const min=await bridgeCheck.encode(canvas,mime,lo);if(min.size<=target){best=min;for(let i=0;i<12;i++){const mid=(lo+hi)/2,blob=await bridgeCheck.encode(canvas,mime,mid);if(blob.size<=target){best=blob;lo=mid;}else hi=mid;}}}
+    }
+    if(!best)throw Error('Impossible d’atteindre le poids cible avec les dimensions conservées.');
+    if(generation!==checkGeneration||!allRows.includes(row))return;
+    const ext=mime==='image/png'?'png':'jpg',name=row.originalFile.name.replace(/\.[^.]+$/,'')+(convert?'_converti':'_compressed')+'.'+ext;
+    const file=new File([best],name,{type:mime});
+    // La validation relit le fichier qui sera effectivement téléchargé/transféré.
+    const decoded=await bridgeCheck.readImage(file);
+    if(generation!==checkGeneration||!allRows.includes(row))return;
+    if(row.previewUrl)URL.revokeObjectURL(row.previewUrl);
+    Object.assign(row,{file,width:decoded.naturalWidth,height:decoded.naturalHeight,correction:convert?'Conversion JPG':'Compression',previewUrl:URL.createObjectURL(file),offerJpg:false});
+    analyseCheckRow(row);showToast(`${name} : ${(file.size/1024).toFixed(1)} Ko.`);
+  }catch(error){if(generation===checkGeneration)row.error=error.message;}
+  finally{row.busy=false;if(generation===checkGeneration)renderTable();}
+}
+function convertToJpg(id){return compressFile(id,true);}
+function showToast(text){const toast=document.getElementById('toast');toast.textContent=text;toast.classList.add('show');clearTimeout(toast._tid);toast._tid=setTimeout(()=>toast.classList.remove('show'),2400);}
+async function exportCSV(){
+  const cell=value=>{let s=String(value??'');if(/^[=+@\-\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};
+  const rows=[['Fichier original','Fichier actuel','Statut','Largeur','Hauteur','Poids Ko','Extension','Détail','Correction'],...allRows.map(row=>[row.originalFile.name,row.file.name,{'OK':'Conforme','NOK':'Non conforme','UNKNOWN':'Non analysé'}[row.status],row.width,row.height,(row.file.size/1024).toFixed(2),row.ext,row.detail,row.correction])];
+  bridgeCheck.download(new Blob(['\ufeff'+rows.map(row=>row.map(cell).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'}),`checkpub-${new Date().toISOString().slice(0,10)}.csv`);
+}
+fileInput.addEventListener('change',()=>{handleFiles(fileInput.files);fileInput.value='';});
+document.getElementById('btn-browse').addEventListener('click',()=>fileInput.click());
+for(const type of ['dragenter','dragover'])dropZone.addEventListener(type,event=>{event.preventDefault();dropZone.classList.add('hover');});
+for(const type of ['dragleave','drop'])dropZone.addEventListener(type,event=>{event.preventDefault();dropZone.classList.remove('hover');});
+dropZone.addEventListener('drop',event=>handleFiles(event.dataTransfer.files));
+deviceFilter.addEventListener('change',updateVisibility);statusFilter.addEventListener('change',updateVisibility);
+resultBody.addEventListener('click',event=>{
+  const button=event.target.closest('button');if(!button)return;
+  if(button.dataset.compress)return compressFile(button.dataset.compress);
+  if(button.dataset.convert)return convertToJpg(button.dataset.convert);
+  if(button.dataset.download){const row=allRows.find(r=>r.id===button.dataset.download);if(row)bridgeCheck.download(row.file,row.file.name);return;}
+  if(button.dataset.transfer){const row=allRows.find(r=>r.id===button.dataset.id);if(row&&!row.busy)bridgeCheck.send(button.dataset.transfer,[row.file]);}
 });
-
-dropZone.addEventListener('dragleave', e => {
-  if (!dropZone.contains(e.relatedTarget)) {
-    dropZone.classList.remove('hover');
-  }
-});
-
-dropZone.addEventListener('drop', e => {
-  e.preventDefault();
-  dropZone.classList.remove('hover');
-  if (e.dataTransfer.files.length) handleFiles(e.dataTransfer.files);
-});
-
-// Click to browse — button only, never from drop
-document.getElementById('btn-browse').addEventListener('click', e => {
-  e.stopPropagation();
-  fileInput.click();
-});
-fileInput.addEventListener('change', () => {
-  if (fileInput.files.length) handleFiles(fileInput.files);
-  fileInput.value = '';
-});
-
-deviceFilter.addEventListener('change', updateVisibility);
-statusFilter.addEventListener('change', updateVisibility);
-
-function handleFiles(files) {
-  const arr = Array.from(files);
-  if (!arr.length) return;
-  pendingCount += arr.length;
-  batchSize += arr.length;
-
-  arr.forEach(file => {
-    const ext = file.name.split('.').pop().toLowerCase();
-
-    if (ext === 'html') {
-      processResult(file, null, null, ext);
-    } else {
-      const reader = new FileReader();
-      reader.onload = ev => {
-        const img = new Image();
-        img.onload = () => processResult(file, img.width, img.height, ext);
-        img.onerror = () => processResult(file, null, null, ext);
-        img.src = ev.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  });
-}
-
-function processResult(file, width, height, ext) {
-  const sizeKo = +(file.size / 1024).toFixed(1);
-  const key = (width && height) ? `${width}x${height}` : null;
-  const matches = key ? specFormats.filter(f => f.tailles.includes(key)) : [];
-
-  // ── Détection mismatch nomenclature ──
-  // Extrait toutes les dimensions connues du spec (dédupliquées)
-  const knownSizes = [...new Set(specFormats.flatMap(f => f.tailles))];
-  let mismatchHtml = '';
-  if (width && height) {
-    for (const size of knownSizes) {
-      const [sw, sh] = size.split('x').map(Number);
-      const pattern = new RegExp('(?:^|[_\\-\\s\\.])' + sw + '[xX]' + sh + '(?:[_\\-\\s\\.]|$)');
-      if (pattern.test(file.name)) {
-        if (sw !== width || sh !== height) {
-          stats.mismatch++;
-          mismatchFiles.push({ name: file.name, announced: `${sw}×${sh}`, real: `${width}×${height}` });
-          mismatchHtml = `
-            <div class="badge-mismatch">
-              <svg width="13" height="13" fill="none" stroke="#d97706" stroke-width="2.2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-              </svg>
-              <span>
-                Nomenclature trompeuse
-                <span class="badge-mismatch-details">Nom annonce ${sw}\u00d7${sh} \u00b7 R\u00e9el\u00a0: ${width}\u00d7${height}</span>
-              </span>
-            </div>`;
-        }
-        break;
-      }
-    }
-  }
-
-  const rowId = 'row-' + (++rowIdCounter);
-  let rowClass = 'row-unknown';
-  let statusHtml = '';
-  let contextStr = 'none';
-  let correspondances = '';
-  let conformeFlag = false;
-
-  if (!key && ext !== 'html') {
-    statusHtml = `<span class="status-unknown">Format non analysable</span>`;
-  } else if (key && matches.length === 0) {
-    statusHtml = `<div class="status-nok"><span class="status-dot dot-nok"></span>Taille non reconnue</div>`;
-    rowClass = 'row-nok';
-    stats.nok++;
-  } else {
-    let hasOk = false;
-    let errors = [];
-    let weightOnlyErrors = [];  // matches where only weight fails
-    let minPoidsMax = Infinity;
-
-    contextStr = matches.map(m => m.context).join(',');
-    correspondances = matches.map(m => `<span class="badge ${m.context}">${m.nom} · ${m.context}</span>`).join('');
-
-    matches.forEach(match => {
-      const formatOk = match.formats.includes(ext);
-      const poidsOk = sizeKo <= match.poidsMax;
-      if (formatOk && poidsOk) {
-        hasOk = true;
-      } else {
-        let d = [];
-        if (!formatOk) d.push(`format non autorisé`);
-        if (!poidsOk)  d.push(`+${Math.round(sizeKo - match.poidsMax)} Ko vs limite ${match.poidsMax} Ko`);
-        errors.push(`<b>${match.nom} ${match.context}</b> : ${d.join(', ')}`);
-        // Track weight-only failures for compressible formats
-        if (formatOk && !poidsOk) {
-          weightOnlyErrors.push(match);
-          if (match.poidsMax < minPoidsMax) minPoidsMax = match.poidsMax;
-        }
-      }
-    });
-
-    const canCompress = !hasOk
-      && weightOnlyErrors.length > 0
-      && weightOnlyErrors.length === matches.length  // ALL failures are weight-only
-      && ['jpg','jpeg','png'].includes(ext);
-
-    if (hasOk) {
-      rowClass = 'row-ok';
-      conformeFlag = true;
-      statusHtml = `<span class="status-ok"><span class="status-dot dot-ok"></span>Conforme</span>` + mismatchHtml;
-      stats.ok++;
-    } else {
-      rowClass = 'row-nok';
-      const errBlock = `<div class="status-nok"><span class="status-dot dot-nok" style="display:inline-block;margin-right:4px;"></span>${errors.join('<br>')}</div>`;
-      const compressBlock = canCompress
-        ? `<button class="btn-compress" id="btn-${rowId}" onclick="compressFile('${rowId}')">
-            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 2v10m0 0l-3-3m3 3l3-3M3 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg>
-            Compresser à ${minPoidsMax} Ko
-           </button>
-           <span class="compress-target">Cible : ≤ ${minPoidsMax} Ko · Actuellement : ${sizeKo} Ko</span>`
-        : '';
-      statusHtml = errBlock + compressBlock + mismatchHtml;
-      stats.nok++;
-
-      if (canCompress) {
-        fileStore[rowId] = { file, ext, targetKo: minPoidsMax, width, height };
-      }
-    }
-  }
-
-  stats.total++;
-  updateStats();
-
-  const dimDisplay = (width && height) ? `<span class="dims">${width}×${height}</span>` : '<span style="color:var(--text-faint)">—</span>';
-
-  const rowData = {
-    html: `<tr id="${rowId}" class="${rowClass}" data-context="${contextStr}" data-status="${conformeFlag ? 'OK' : 'NOK'}">
-      <td><span class="file-name">${escHtml(file.name)}</span></td>
-      <td>${dimDisplay}</td>
-      <td><span class="poids" id="poids-${rowId}">${sizeKo} Ko</span></td>
-      <td><span class="fmt-pill">${ext}</span></td>
-      <td style="max-width:260px;">${correspondances || '<span style="color:var(--text-faint)">—</span>'}</td>
-      <td id="status-${rowId}">${statusHtml}</td>
-    </tr>`,
-    conform: conformeFlag,
-    name: file.name
-  };
-  allRows.push(rowData);
-  renderTable();
-  updateVisibility();
-
-  pendingCount--;
-  if (pendingCount === 0 && stats.total > 0) {
-    setTimeout(() => {
-      if (stats.nok > 0) launchAlert();
-      else if (stats.mismatch > 0) launchMismatch();
-      else launchFireworks();
-    }, 350);
-  }
-
-  document.getElementById('btn-export').disabled = false;
-  document.getElementById('btn-reset').disabled = false;
-  showToast(`${file.name} analysé`);
-}
-
-function renderTable() {
-  resultBody.innerHTML = allRows.map(r => r.html).join('');
-  emptyState.style.display = 'none';
-  resultTable.style.display = 'table';
-}
-
-function updateVisibility() {
-  const dev = deviceFilter.value;
-  const sts = statusFilter.value;
-  document.querySelectorAll('#result-body tr').forEach(row => {
-    const ctx = row.getAttribute('data-context') || '';
-    const st  = row.getAttribute('data-status') || '';
-    const devOk = (dev === 'ALL') || ctx.includes(dev);
-    const stsOk = (sts === 'ALL') || st === sts;
-    row.style.display = (devOk && stsOk) ? '' : 'none';
-  });
-}
-
-function updateStats() {
-  const el = (id, val) => document.getElementById(id).textContent = val;
-  const rate = stats.total ? Math.round((stats.ok / stats.total) * 100) : 0;
-  el('stat-total', stats.total);
-  el('stat-ok', stats.ok);
-  el('stat-nok', stats.nok);
-  el('stat-rate', stats.total ? `${rate} %` : '—');
-  el('stat-mismatch', stats.total ? (stats.mismatch > 0 ? stats.mismatch : '✓') : '—');
-  ['card-total','card-ok','card-nok','card-rate','card-mismatch'].forEach(id => {
-    document.getElementById(id).classList.toggle('has-data', stats.total > 0);
-  });
-}
-
-function resetAll() {
-  allRows = [];
-  stats = { total: 0, ok: 0, nok: 0, mismatch: 0 };
-  mismatchFiles = [];
-  pendingCount = 0;
-  batchSize = 0;
-  resultBody.innerHTML = '';
-  resultTable.style.display = 'none';
-  emptyState.style.display = '';
-  updateStats();
-  document.getElementById('btn-export').disabled = true;
-  document.getElementById('btn-reset').disabled = true;
-}
-
-async function exportCSV() {
-  const headers = ['Fichier','Statut'];
-  const lines = allRows.map(r => {
-    const div = document.createElement('div');
-    div.innerHTML = r.html;
-    const cells = div.querySelectorAll('td');
-    return [cells[0]?.textContent?.trim(), r.conform ? 'Conforme' : 'Non conforme'].map(v => `"${v}"`).join(',');
-  });
-  const csv = [headers.join(','), ...lines].join('\n');
-  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
-  const url = await blobToDataUrl(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `checkpub-${new Date().toISOString().slice(0,10)}.csv`;
-  a.click();
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(t._tid);
-  t._tid = setTimeout(() => t.classList.remove('show'), 2200);
-}
-
-function escHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-// Convertit un Blob en data: URL — fonctionne dans les iframes sandboxées (Notion, etc.)
-function blobToDataUrl(blob) {
-  return new Promise((res, rej) => {
-    const r = new FileReader();
-    r.onload = e => res(e.target.result);
-    r.onerror = rej;
-    r.readAsDataURL(blob);
-  });
-}
-
-async function compressFile(rowId) {
-  const entry = fileStore[rowId];
-  if (!entry) return;
-
-  const { file, ext, targetKo, width, height } = entry;
-  const mimeType = ext === 'png' ? 'image/png' : 'image/jpeg';
-  const statusCell = document.getElementById('status-' + rowId);
-  const poidsCell  = document.getElementById('poids-' + rowId);
-
-  statusCell.innerHTML = `<div class="compress-loading"><div class="compress-spinner"></div>Compression en cours…</div>`;
-
-  try {
-    const dataUrl = await new Promise((res, rej) => {
-      const r = new FileReader();
-      r.onload = e => res(e.target.result);
-      r.onerror = rej;
-      r.readAsDataURL(file);
-    });
-
-    const img = await new Promise((res, rej) => {
-      const i = new Image();
-      i.onload = () => res(i);
-      i.onerror = rej;
-      i.src = dataUrl;
-    });
-
-    const canvas = document.createElement('canvas');
-    canvas.width  = width  || img.naturalWidth;
-    canvas.height = height || img.naturalHeight;
-    const ctx2d = canvas.getContext('2d');
-    ctx2d.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-    const targetBytes = targetKo * 1024;
-    let lo = 0.01, hi = 0.99, bestBlob = null, bestQ = hi;
-
-    // Binary search: find highest quality that stays under targetBytes
-    for (let iter = 0; iter < 14; iter++) {
-      const mid = (lo + hi) / 2;
-      const blob = await new Promise(res => canvas.toBlob(res, mimeType, mid));
-      if (!blob) break;
-      if (blob.size <= targetBytes) {
-        bestBlob = blob;
-        bestQ = mid;
-        lo = mid;
-      } else {
-        hi = mid;
-      }
-    }
-
-    if (!bestBlob) {
-      if (mimeType === 'image/png') {
-        statusCell.innerHTML = `
-          <div class="status-nok"><span class="status-dot dot-nok" style="display:inline-block;margin-right:4px;"></span>PNG lossless : la qualité n'a pas d'effet.</div>
-          <button class="btn-compress" id="btn-${rowId}" onclick="convertToJpg('${rowId}')" style="background:#eff6ff;border-color:#93c5fd;color:#1e3a8a;margin-top:8px;">
-            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4 4h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4zM8 20h8M12 16v4"/></svg>
-            Convertir en JPG (≤ ${targetKo} Ko)
-          </button>
-          <span class="compress-target" style="color:#3b82f6;">Dimensions préservées · Format JPG</span>`;
-      } else {
-        statusCell.innerHTML = `<div class="status-nok"><span class="status-dot dot-nok" style="display:inline-block;margin-right:4px;"></span>Poids trop important (${(file.size/1024).toFixed(1)} Ko → cible ${targetKo} Ko).</div><span class="compress-error">Impossible d'atteindre ${targetKo} Ko sans dégradation excessive. Retravaillez la source.</span>`;
-      }
-      return;
-    }
-
-    const achievedKo = +(bestBlob.size / 1024).toFixed(1);
-    const outName = file.name.replace(/\.[^.]+$/, '') + '_compressed.' + ext;
-    const url = await blobToDataUrl(bestBlob);
-
-    poidsCell.innerHTML = `<span class="poids" style="color:var(--green)">${achievedKo} Ko</span>`;
-    statusCell.innerHTML = `
-      <span class="status-ok" style="display:flex;align-items:center;gap:6px;">
-        <span class="status-dot dot-ok"></span>Conforme après compression
-      </span>
-      <div class="compress-preview-wrap">
-        <div class="compress-preview-header">
-          <span class="compress-preview-label">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-            ${achievedKo} Ko · Prêt
-          </span>
-          <span class="compress-preview-hint">Clic droit → Enregistrer l'image</span>
-        </div>
-        <img class="compress-preview-img" src="${url}" alt="${escHtml(outName)}" title="Clic droit → Enregistrer l'image sous…">
-      </div>`;
-
-    const row = document.getElementById(rowId);
-    if (row) {
-      row.classList.remove('row-nok');
-      row.classList.add('row-ok');
-      row.setAttribute('data-status', 'OK');
-    }
-    stats.nok = Math.max(0, stats.nok - 1);
-    stats.ok++;
-    updateStats();
-    showToast(`${file.name} compressé : ${achievedKo} Ko`);
-
-  } catch (err) {
-    statusCell.innerHTML = `<span class="compress-error">Erreur lors de la compression : ${err.message}</span>`;
-  }
-}
-
-async function convertToJpg(rowId) {
-  const entry = fileStore[rowId];
-  if (!entry) return;
-
-  const { file, targetKo, width, height } = entry;
-  const statusCell = document.getElementById('status-' + rowId);
-  const poidsCell  = document.getElementById('poids-' + rowId);
-
-  statusCell.innerHTML = `<div class="compress-loading"><div class="compress-spinner"></div>Conversion JPG en cours…</div>`;
-
-  try {
-    const dataUrl = await new Promise((res, rej) => {
-      const r = new FileReader();
-      r.onload = e => res(e.target.result);
-      r.onerror = rej;
-      r.readAsDataURL(file);
-    });
-
-    const img = await new Promise((res, rej) => {
-      const i = new Image();
-      i.onload = () => res(i);
-      i.onerror = rej;
-      i.src = dataUrl;
-    });
-
-    const canvas = document.createElement('canvas');
-    canvas.width  = width  || img.naturalWidth;
-    canvas.height = height || img.naturalHeight;
-    const ctx2d = canvas.getContext('2d');
-    ctx2d.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-    const targetBytes = targetKo * 1024;
-    let lo = 0.01, hi = 0.99, bestBlob = null;
-
-    for (let iter = 0; iter < 14; iter++) {
-      const mid = (lo + hi) / 2;
-      const blob = await new Promise(res => canvas.toBlob(res, 'image/jpeg', mid));
-      if (!blob) break;
-      if (blob.size <= targetBytes) { bestBlob = blob; lo = mid; }
-      else { hi = mid; }
-    }
-
-    if (!bestBlob) {
-      statusCell.innerHTML = `<div class="status-nok"><span class="status-dot dot-nok" style="display:inline-block;margin-right:4px;"></span>Impossible d'atteindre ${targetKo} Ko en JPG sans dégradation excessive.</div><span class="compress-error">Retravaillez la source.</span>`;
-      return;
-    }
-
-    const achievedKo = +(bestBlob.size / 1024).toFixed(1);
-    const outName = file.name.replace(/\.png$/i, '') + '_converti.jpg';
-    const url = await blobToDataUrl(bestBlob);
-
-    poidsCell.innerHTML = `<span class="poids" style="color:var(--green)">${achievedKo} Ko</span>`;
-    statusCell.innerHTML = `
-      <span class="status-ok" style="display:flex;align-items:center;gap:6px;">
-        <span class="status-dot dot-ok"></span>Conforme après conversion JPG
-      </span>
-      <div class="compress-preview-wrap">
-        <div class="compress-preview-header">
-          <span class="compress-preview-label">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-            ${achievedKo} Ko · JPG
-          </span>
-          <span class="compress-preview-hint">Clic droit → Enregistrer l'image</span>
-        </div>
-        <img class="compress-preview-img" src="${url}" alt="${escHtml(outName)}" title="Clic droit → Enregistrer l'image sous…">
-      </div>`;
-
-    const row = document.getElementById(rowId);
-    if (row) {
-      row.classList.remove('row-nok');
-      row.classList.add('row-ok');
-      row.setAttribute('data-status', 'OK');
-    }
-    stats.nok = Math.max(0, stats.nok - 1);
-    stats.ok++;
-    updateStats();
-    showToast(`${file.name} converti en JPG : ${achievedKo} Ko`);
-
-  } catch (err) {
-    statusCell.innerHTML = `<span class="compress-error">Erreur : ${err.message}</span>`;
-  }
-}
+bridgeCheck.register('checkpub',handleFiles);
+bridgeCheck.mount('checkpub-transfer',()=>allRows.filter(row=>checkVisible(row)&&row.status!=='UNKNOWN'&&!row.busy).map(row=>row.file),['renamer','kaptur']);
+renderTable();
 
 function launchMismatch() {
   document.getElementById('mismatch-count').textContent = stats.mismatch;
@@ -3907,6 +3776,8 @@ if (state.cta) {
         family: 'APP',
         exportLabel: 'APP_INTERSTITIEL',
         acceptedSize: { w: 320, h: 480 },
+        acceptedSizes: [{ w: 320, h: 480 }, { w: 680, h: 1024 }],
+        allowRotation: false,
         backgroundVariants: ['interstitielapp/canvas.png'],
         previewScale: 0.50,
         fields: [],
@@ -3916,7 +3787,7 @@ if (state.cta) {
           if (bgImage) ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
           if (uploadedImage) {
             const drawW = canvas.width;
-            const drawH = Math.round(drawW * (480 / 320));
+            const drawH = Math.round(drawW * (uploadedImage.naturalHeight / uploadedImage.naturalWidth));
             ctx.drawImage(uploadedImage, 0, (canvas.height - drawH) / 2, drawW, drawH);
           }
         }
@@ -4338,10 +4209,21 @@ if (state.cta) {
       }
     };
 
-    const AUTO_ASSIGN_RULES = Object.values(FORMATS).map(format => ({
-      size: format.acceptedSize,
-      formatIds: [format.id]
-    }));
+    function acceptedSizesFor(format) {
+      return format.acceptedSizes || [format.acceptedSize];
+    }
+
+    function acceptedSizeLabel(format) {
+      return acceptedSizesFor(format).map(size => `${size.w}×${size.h}`).join(' ou ');
+    }
+
+    const AUTO_ASSIGN_RULES = Object.values(FORMATS).flatMap(format =>
+      acceptedSizesFor(format).map(size => ({
+        size,
+        allowRotation: format.allowRotation !== false,
+        formatIds: [format.id]
+      }))
+    );
 
     const store = {
       activeFormatId: 'bp1',
@@ -4484,20 +4366,100 @@ if (state.cta) {
       els.statusBox.style.color = type === 'error' ? '#8A1C1C' : '#1B5E20';
     }
 
-    function saveSession() {
-      localStorage.setItem('kaptur_v2_state', JSON.stringify(store));
+    // Session Kaptur : IndexedDB, migration contrôlée et sauvegarde de secours exportable.
+    const emptySession = JSON.parse(JSON.stringify(store));
+    let sessionDbPromise = null, saveTimer = null, saveQueue = Promise.resolve(), saveVersion = 0, sessionDirty = false;
+    function saveNotice(text, error = false) {
+      const status = document.getElementById('kaptur-save-status');
+      status.textContent = text; status.classList.toggle('is-error',error);
     }
-
-    function loadSession() {
-      const raw = localStorage.getItem('kaptur_v2_state');
-      if (!raw) return;
-      try {
-        const parsed = JSON.parse(raw);
-        Object.assign(store, parsed);
-      } catch {
-        setStatus('Session corrompue ignorée.', 'error');
+    function openSessionDb() {
+      if (sessionDbPromise) return sessionDbPromise;
+      sessionDbPromise = new Promise((resolve,reject)=>{
+        if (!window.indexedDB) { reject(new Error('Stockage local indisponible.')); return; }
+        const request = indexedDB.open('adops_kaptur_v4',1);
+        const timer = setTimeout(()=>reject(new Error('Le stockage local ne répond pas.')),8000);
+        request.onupgradeneeded=()=>{if(!request.result.objectStoreNames.contains('sessions'))request.result.createObjectStore('sessions');};
+        request.onsuccess=()=>{clearTimeout(timer);const db=request.result;db.onversionchange=()=>{db.close();sessionDbPromise=null;};resolve(db);};
+        request.onerror=()=>{clearTimeout(timer);reject(request.error||new Error('Ouverture du stockage impossible.'));};
+        request.onblocked=()=>{clearTimeout(timer);reject(new Error('Fermez les autres onglets Kaptur puis rechargez.'));};
+      }).catch(error=>{sessionDbPromise=null;throw error;});
+      return sessionDbPromise;
+    }
+    async function sessionTransaction(mode,value) {
+      const db=await openSessionDb();
+      return new Promise((resolve,reject)=>{
+        const tx=db.transaction('sessions',mode), objectStore=tx.objectStore('sessions');
+        const request=mode==='readonly'?objectStore.get('current'):objectStore.put(value,'current');
+        tx.oncomplete=()=>resolve(request.result);
+        tx.onerror=tx.onabort=()=>reject(tx.error||new Error('Écriture impossible.'));
+      });
+    }
+    function normalizeSession(input) {
+      if(!input||typeof input!=='object'||!input.formats||typeof input.formats!=='object')throw new Error('Sauvegarde Kaptur invalide.');
+      const next=JSON.parse(JSON.stringify(emptySession));
+      next.campaignName=typeof input.campaignName==='string'?input.campaignName.slice(0,300):'';
+      next.activeFormatId=FORMATS[input.activeFormatId]?input.activeFormatId:next.activeFormatId;
+      next.activeFamily=FORMATS[next.activeFormatId].family;
+      next.previewScale=['0.25','0.5','0.75','1'].includes(String(input.previewScale))?String(input.previewScale):next.previewScale;
+      next.exportQuality=Number.isFinite(Number(input.exportQuality))?Math.max(0,Math.min(100,Number(input.exportQuality))):100;
+      for(const [id,format] of Object.entries(FORMATS)){
+        const incoming=input.formats[id];if(!incoming||typeof incoming!=='object')continue;
+        const state=next.formats[id], keys=new Set(format.fields.map(field=>field.key));
+        keys.add('backgroundVariant');
+        for(const [key,value] of Object.entries(incoming.fields||{})){
+          if(!keys.has(key)||!['string','number','boolean'].includes(typeof value))continue;
+          if(key==='backgroundVariant'&&!format.backgroundVariants.includes(value))continue;
+          state.fields[key]=typeof value==='string'?value.slice(0,20000):value;
+        }
+        const image=incoming.imageDataUrl;
+        if(typeof image==='string'&&/^data:image\/(png|jpeg|gif|webp|bmp|avif|svg\+xml);base64,/i.test(image))state.imageDataUrl=image;
+        state.used=!!incoming.used;state.freeMode=!!incoming.freeMode;
       }
+      return next;
     }
+    function persistSession() {
+      clearTimeout(saveTimer);saveTimer=null;
+      const version=saveVersion, snapshot=JSON.parse(JSON.stringify(store));
+      saveQueue=saveQueue.catch(()=>{}).then(()=>sessionTransaction('readwrite',{schema:4,savedAt:new Date().toISOString(),state:snapshot}));
+      return saveQueue.then(()=>{
+        if(version===saveVersion){sessionDirty=false;saveNotice('Session enregistrée sur ce navigateur.');}
+        // Le précédent brouillon n'est retiré qu'après une écriture confirmée.
+        try{localStorage.removeItem('kaptur_v2_state');}catch{}
+        return true;
+      },error=>{if(version===saveVersion)saveNotice('Sauvegarde impossible — exportez la session pour la conserver.',true);return false;});
+    }
+    function saveSession() {
+      saveVersion++;sessionDirty=true;saveNotice('Enregistrement en cours…');
+      clearTimeout(saveTimer);saveTimer=setTimeout(persistSession,300);
+    }
+    async function loadSession() {
+      let saved=null;
+      try{saved=await sessionTransaction('readonly');}
+      catch{saveNotice('Stockage local indisponible — utilisez Exporter la session.',true);}
+      if(saved){
+        try{Object.assign(store,normalizeSession(saved.state));saveNotice('Session restaurée.');return;}
+        catch{saveNotice('Sauvegarde locale invalide. Importez une sauvegarde valide.',true);}
+      }
+      try{
+        const legacy=localStorage.getItem('kaptur_v2_state');
+        if(legacy){Object.assign(store,normalizeSession(JSON.parse(legacy)));saveNotice('Ancienne session restaurée ; migration en cours.');}
+      }catch{saveNotice('Ancienne session illisible. La session courante reste utilisable.',true);}
+    }
+    function exportSessionFile() {
+      const json=JSON.stringify({app:'Kaptur',schema:4,exportedAt:new Date().toISOString(),state:store},null,2);
+      window.AdOpsBridge.download(new Blob([json],{type:'application/json'}),(sanitizeFileName(store.campaignName)||'KAPTUR')+'_session.json');
+    }
+    async function importSessionFile(file) {
+      if(!file)return;
+      try{
+        const raw=JSON.parse(await file.text()),next=normalizeSession(raw.app==='Kaptur'?raw.state:raw);
+        if(!confirm('Remplacer la session Kaptur actuelle par cette sauvegarde ?'))return;
+        Object.assign(store,next);applyFormatDefaults();applyRuntimeDefaults();saveSession();render();
+        await persistSession();
+      }catch(error){setStatus(error.message||'Import de session impossible.','error');}
+    }
+    window.addEventListener('beforeunload',event=>{if(sessionDirty){event.preventDefault();event.returnValue='';}});
 
     function splitLines(text = '', maxCharsPerLine = 25, maxLines = 2) {
       if (!text.trim()) return [];
@@ -4796,22 +4758,22 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       ctx.fill();
     }
 
-    function getBackgroundSource(formatId) {
+    function getBackgroundSource(formatId, stateOverride = null) {
       const format = FORMATS[formatId];
       if (!format) return '';
       if (formatId === 'format728') {
-        const state = getFormatState(formatId);
+        const state = stateOverride || getFormatState(formatId);
         const arrival = state?.fields?.arrival || 'Lyon';
         const assetName = `${slugifyCity(arrival)}.png`;
         return `728x90/${assetName}`;
       }
       if (formatId === 'app320devis') {
-        const state = getFormatState(formatId);
+        const state = stateOverride || getFormatState(formatId);
         const arrival = state?.fields?.arrival || 'Lyon';
         const assetName = `${slugifyCity(arrival)}.png`;
         return `320x100_devis/${assetName}`;
       }
-      const state = getFormatState(formatId);
+      const state = stateOverride || getFormatState(formatId);
       const selectedVariant = state?.fields?.backgroundVariant;
       if (selectedVariant) return selectedVariant;
       return format.backgroundVariants[0];
@@ -4854,8 +4816,8 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       return FORMATS[store.activeFormatId];
     }
 
-    async function ensureBackgroundLoaded(formatId) {
-      const src = getBackgroundSource(formatId);
+    async function ensureBackgroundLoaded(formatId, sourceOverride = null) {
+      const src = sourceOverride || getBackgroundSource(formatId);
       if (!src) return null;
       const cacheKey = `${formatId}:${src}`;
       if (!loadedImages.backgrounds.has(cacheKey)) {
@@ -4998,7 +4960,7 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
         const isActive = format.id === store.activeFormatId;
         btn.className = `format-chip ${isActive ? 'active' : ''}`;
         btn.innerHTML = `
-          <span class="format-chip-label">${format.label}<small>${format.acceptedSize.w}×${format.acceptedSize.h}</small></span>
+          <span class="format-chip-label">${format.label}<small>${acceptedSizeLabel(format)}</small></span>
           ${hasImage ? '<span class="format-ready-dot" title="Visuel chargé"></span>' : ''}
           <span class="format-chip-chevron">${isActive ? '▾' : '▸'}</span>
         `;
@@ -5345,63 +5307,51 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       els.exportQuality.value = String(store.exportQuality ?? 100);
       els.exportQualityValue.textContent = `${store.exportQuality ?? 100}%`;
       els.metaFamily.textContent = format.family;
-      els.metaSize.textContent = `${format.acceptedSize.w}×${format.acceptedSize.h}`;
+      els.metaSize.textContent = acceptedSizeLabel(format);
       els.metaExport.textContent = format.exportLabel;
       els.previewTitle.textContent = format.label;
-      els.previewSubtitle.textContent = `${format.family} · ${format.acceptedSize.w}×${format.acceptedSize.h}`;
-      els.localUploadHint.textContent = `Dimensions attendues : ${format.acceptedSize.w}×${format.acceptedSize.h}`;
+      els.previewSubtitle.textContent = `${format.family} · ${acceptedSizeLabel(format)}`;
+      els.localUploadHint.textContent = `Dimensions acceptées : ${acceptedSizeLabel(format)} px`;
       const state = getFormatState(format.id);
       const selectedBg = state?.fields?.backgroundVariant || format.backgroundVariants[0];
       els.formatHelp.textContent = `Fond actif : ${selectedBg}`;
     }
 
-    async function renderCanvas() {
-      const format = getCurrentFormat();
-      const formatState = getFormatState(format.id);
-      const bgImage = await ensureBackgroundLoaded(format.id);
-      const uploadedImage = await ensureUploadLoaded(format.id);
-      const pictoImage = await ensurePictoLoaded();
-      const pictoImage2 = await ensurePicto2Loaded();
-      const pictobanImage = await ensurePictobanLoaded();
-      const pictoCtaImage = await ensurePictoCtaLoaded();
-      const ctaWebPictoImage = await ensureCtaWebPictoLoaded();
-      if (!bgImage) return;
-
-      els.canvas.width = bgImage.width;
-      els.canvas.height = bgImage.height;
-      // Redimensionnement via CSS width/height — 100% = taille réelle du canvas
-      const scale = parseFloat(getEffectivePreviewScale(format));
-      els.canvas.style.width  = Math.round(els.canvas.width  * scale) + 'px';
-      els.canvas.style.height = Math.round(els.canvas.height * scale) + 'px';
-      els.canvas.style.transform = '';
-      els.canvas.style.transformOrigin = '';
-
-      const ctx = els.canvas.getContext('2d');
-      const selected728DateRef = get728DateReference(formatState.fields.travelDate);
-      const mergedState = {
-        ...formatState.fields,
-        freeMode: !!formatState.freeMode,
-        title: formatState.fields.title || '',
-        description: formatState.fields.description || '',
-        subtitle: formatState.fields.subtitle || '',
-        tag: formatState.fields.tag || '',
-        cta: formatState.fields.cta || '',
-        travelDateLabel: format728DateLabel(selected728DateRef),
-        travelDateLabelDevis: formatDevisDateLabel(selected728DateRef),
-        travelDateLabelConfirmation: formatConfirmationDateLabel(selected728DateRef),
-        travelDateWindow: get728DateWindow(formatState.fields.travelDate)
-      };
-
-      format.draw(ctx, mergedState, {
-        canvas: els.canvas,
-        bgImage,
-        uploadedImage,
-        pictoImage,
-        pictoImage2,
-        pictobanImage,
-        pictoCtaImage,
-        ctaWebPictoImage
-      });
+    let renderGeneration = 0, exportBusy = false;
+    function clearKapturPreview(message) {
+      els.canvas.width=1;els.canvas.height=1;els.canvas.style.display='none';
+      document.getElementById('kaptur-preview-error').textContent=message||'';
+      els.downloadBtn.disabled=true;els.exportCurrentBtn.disabled=true;
+    }
+    async function renderCanvas({formatId=store.activeFormatId,publish=true,stateOverride=null}={}) {
+      const request=publish?++renderGeneration:renderGeneration;
+      const format=FORMATS[formatId];
+      const formatState=JSON.parse(JSON.stringify(stateOverride||getFormatState(formatId)));
+      const source=getBackgroundSource(formatId,formatState);
+      if(publish)clearKapturPreview('Chargement de l’aperçu…');
+      try {
+        const bgImage=await ensureBackgroundLoaded(formatId,source);
+        if(!bgImage)throw Error(`Aperçu indisponible : fond introuvable pour ${format.label}.`);
+        let uploadedImage=null;
+        if(formatState.imageDataUrl){
+          if(!loadedImages.uploads.has(formatState.imageDataUrl))loadedImages.uploads.set(formatState.imageDataUrl,await loadImage(formatState.imageDataUrl));
+          uploadedImage=loadedImages.uploads.get(formatState.imageDataUrl);
+        }
+        const [pictoImage,pictoImage2,pictobanImage,pictoCtaImage,ctaWebPictoImage]=await Promise.all([ensurePictoLoaded(),ensurePicto2Loaded(),ensurePictobanLoaded(),ensurePictoCtaLoaded(),ensureCtaWebPictoLoaded()]);
+        const drawing=document.createElement('canvas');drawing.width=bgImage.width;drawing.height=bgImage.height;
+        const ctx=drawing.getContext('2d'),selected728DateRef=get728DateReference(formatState.fields.travelDate);
+        const mergedState={...formatState.fields,freeMode:!!formatState.freeMode,title:formatState.fields.title||'',description:formatState.fields.description||'',subtitle:formatState.fields.subtitle||'',tag:formatState.fields.tag||'',cta:formatState.fields.cta||'',travelDateLabel:format728DateLabel(selected728DateRef),travelDateLabelDevis:formatDevisDateLabel(selected728DateRef),travelDateLabelConfirmation:formatConfirmationDateLabel(selected728DateRef),travelDateWindow:get728DateWindow(formatState.fields.travelDate)};
+        format.draw(ctx,mergedState,{canvas:drawing,bgImage,uploadedImage,pictoImage,pictoImage2,pictobanImage,pictoCtaImage,ctaWebPictoImage});
+        if(publish && request===renderGeneration && formatId===store.activeFormatId){
+          els.canvas.width=drawing.width;els.canvas.height=drawing.height;els.canvas.getContext('2d').drawImage(drawing,0,0);
+          const scale=parseFloat(getEffectivePreviewScale(format));els.canvas.style.width=Math.round(drawing.width*scale)+'px';els.canvas.style.height=Math.round(drawing.height*scale)+'px';els.canvas.style.transform='';els.canvas.style.display='block';
+          document.getElementById('kaptur-preview-error').textContent='';els.downloadBtn.disabled=exportBusy;els.exportCurrentBtn.disabled=exportBusy;
+        }
+        return drawing;
+      }catch(error){
+        if(publish){if(request===renderGeneration){clearKapturPreview(error.message);setStatus(error.message,'error');}return null;}
+        throw error;
+      }
     }
 
     function renderFormActions() {
@@ -5538,9 +5488,10 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
     async function handleLocalUpload(file) {
       const format = getCurrentFormat();
       const dims = await measureFileImage(file);
-      const ok = matchesSize(dims, format.acceptedSize);
+      const ok = acceptedSizesFor(format).some(size => matchesSize(dims, size, format.allowRotation !== false));
       if (!ok) {
-        setStatus(`Image ${dims.width}×${dims.height} ≠ attendu ${format.acceptedSize.w}×${format.acceptedSize.h}`, 'error');
+        setStatus(`Image ${dims.width}×${dims.height} ≠ attendu ${acceptedSizeLabel(format)}`, 'error');
+        if (format.id === 'appinterstitiel') return;
       } else {
         setStatus(`Image affectée à ${format.label}.`);
       }
@@ -5551,7 +5502,7 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       let assignedCount = 0;
       for (const file of files) {
         const dims = await measureFileImage(file);
-        const matchingRules = AUTO_ASSIGN_RULES.filter(rule => matchesSize(dims, rule.size));
+        const matchingRules = AUTO_ASSIGN_RULES.filter(rule => matchesSize(dims, rule.size, rule.allowRotation));
         if (!matchingRules.length) {
           setStatus(`Aucun format trouvé pour ${file.name} (${dims.width}×${dims.height}).`, 'error');
           continue;
@@ -5567,10 +5518,10 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       renderCanvas();
     }
 
-    function matchesSize(actual, expected) {
+    function matchesSize(actual, expected, allowRotation = true) {
       const direct = Math.abs(actual.width - expected.w) <= 2 && Math.abs(actual.height - expected.h) <= 2;
       const rotated = Math.abs(actual.width - expected.h) <= 2 && Math.abs(actual.height - expected.w) <= 2;
-      return direct || rotated;
+      return direct || (allowRotation && rotated);
     }
 
     function bindDropZone(zone, input, onFiles) {
@@ -5589,27 +5540,33 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
     }
 
     async function exportCurrentFormat() {
-      await renderCanvas();
-      await downloadCanvas(
-        buildExportName(store.activeFormatId),
-        Number(store.exportQuality ?? 100)
-      );
+      if(exportBusy)return;exportBusy=true;
+      const id=store.activeFormatId,filename=buildExportName(id),quality=Number(store.exportQuality??100);
+      els.downloadBtn.disabled=els.exportCurrentBtn.disabled=els.exportAllBtn.disabled=true;
+      try{
+        const drawing=await renderCanvas({formatId:id,publish:false});
+        await downloadCanvas(filename,quality,drawing);setStatus('Capture exportée.');
+      }catch(error){setStatus('Export annulé : '+error.message,'error');}
+      finally{exportBusy=false;els.exportAllBtn.disabled=false;renderCanvas();}
     }
-
     async function exportAllUsedFormats() {
-      const previousFormatId = store.activeFormatId;
-      const quality = Number(store.exportQuality ?? 100);
-      for (const formatId of Object.keys(FORMATS)) {
-        if (!store.formats[formatId].used) continue;
-        store.activeFormatId = formatId;
-        render();
-        await renderCanvas();
-        await downloadCanvas(buildExportName(formatId), quality);
-        await sleep(120);
-      }
-      store.activeFormatId = previousFormatId;
-      render();
-      setStatus(`Export des formats utilisés terminé (${quality}%).`);
+      if(exportBusy)return;
+      const ids=Object.keys(FORMATS).filter(id=>store.formats[id].used);
+      if(!ids.length){setStatus('Aucun format utilisé à exporter.','error');return;}
+      exportBusy=true;els.downloadBtn.disabled=els.exportCurrentBtn.disabled=els.exportAllBtn.disabled=true;
+      const snapshots=Object.fromEntries(ids.map(id=>[id,JSON.parse(JSON.stringify(store.formats[id]))]));
+      const names=Object.fromEntries(ids.map(id=>[id,buildExportName(id)])),quality=Number(store.exportQuality??100);
+      let exported=0;const failures=[];
+      try{
+        for(const id of ids){
+          try{
+            const drawing=await renderCanvas({formatId:id,publish:false,stateOverride:snapshots[id]});
+            await downloadCanvas(names[id],quality,drawing);exported++;
+          }catch(error){failures.push(FORMATS[id].label);}
+          await sleep(120);
+        }
+        setStatus(`${exported} capture(s) exportée(s).${failures.length?' Non exportées (rendu indisponible) : '+failures.join(', '):''}`,failures.length?'error':'ok');
+      }finally{exportBusy=false;els.exportAllBtn.disabled=false;renderCanvas();}
     }
 
     function qualityPercentToMimeType(qualityPercent) {
@@ -5638,13 +5595,13 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
 
-    async function downloadCanvas(filename, qualityPercent = 100) {
+    async function downloadCanvas(filename, qualityPercent = 100, sourceCanvas = els.canvas) {
       const mimeType = qualityPercentToMimeType(qualityPercent);
       const extension = qualityPercentToExtension(qualityPercent);
       const finalFilename = replaceFileExtension(filename, extension);
 
       if (mimeType === 'image/png') {
-        const dataUrl = els.canvas.toDataURL('image/png');
+        const dataUrl = sourceCanvas.toDataURL('image/png');
         const a = document.createElement('a');
         a.href = dataUrl;
         a.download = finalFilename;
@@ -5655,7 +5612,7 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       const encoderQuality = qualityPercentToEncoderQuality(qualityPercent);
 
       await new Promise((resolve, reject) => {
-        els.canvas.toBlob(blob => {
+        sourceCanvas.toBlob(blob => {
           if (!blob) {
             reject(new Error('Impossible de générer le fichier compressé.'));
             return;
@@ -5668,6 +5625,55 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
 
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function receiveKapturFiles(files, metadata = {}) {
+      const dialog=document.getElementById('kaptur-map-dialog');
+      if(dialog.open)throw Error('Terminez d’abord l’import déjà ouvert dans Kaptur.');
+      const list=document.getElementById('kaptur-map-list'),error=document.getElementById('kaptur-map-error');
+      list.replaceChildren();error.textContent='';document.getElementById('kaptur-map-replace').checked=false;
+      const items=[];
+      for(const file of files){
+        const item={file,candidates:[],select:null};
+        try{
+          const image=await window.AdOpsBridge.readImage(file);item.width=image.naturalWidth;item.height=image.naturalHeight;
+          item.candidates=Object.values(FORMATS).filter(format=>acceptedSizesFor(format).some(size=>matchesSize({width:item.width,height:item.height},size,format.allowRotation!==false)));
+        }catch{}
+        const row=document.createElement('div');row.className='kaptur-map-row';
+        const label=document.createElement('label');label.textContent=file.name+(item.width?` · ${item.width}×${item.height}`:' · image illisible');
+        const select=document.createElement('select');select.id=`kaptur-map-${items.length}`;label.htmlFor=select.id;
+        const skip=document.createElement('option');skip.value='';skip.textContent=item.candidates.length?'Ignorer ce fichier / choisir un emplacement':'Aucun emplacement compatible';select.appendChild(skip);
+        item.candidates.forEach(format=>{const option=document.createElement('option');option.value=format.id;option.textContent=`${format.family} · ${format.label}${store.formats[format.id].imageDataUrl?' — déjà renseigné':''}`;select.appendChild(option);});
+        if(item.candidates.length===1)select.value=item.candidates[0].id;
+        else if(files.length===1&&item.candidates.some(format=>format.id===store.activeFormatId))select.value=store.activeFormatId;
+        select.disabled=!item.candidates.length;item.select=select;items.push(item);row.append(label,select);list.appendChild(row);
+      }
+      dialog.showModal();
+      return new Promise(resolve=>{
+        const form=document.getElementById('kaptur-map-form'),apply=document.getElementById('kaptur-map-apply'),cancel=document.getElementById('kaptur-map-cancel');
+        let busy=false,settled=false;
+        const finish=value=>{if(settled)return;settled=true;form.removeEventListener('submit',submit);dialog.removeEventListener('cancel',onCancel);dialog.removeEventListener('close',onClose);cancel.removeEventListener('click',onCancelClick);dialog.close();apply.disabled=cancel.disabled=false;resolve(value);};
+        const onClose=()=>{if(!settled)finish(false);};
+        const onCancel=event=>{event.preventDefault();if(!busy)finish(false);};
+        const onCancelClick=()=>{if(!busy)finish(false);};
+        const submit=async event=>{
+          event.preventDefault();if(busy)return;
+          const selected=items.filter(item=>item.select.value),used=new Set();
+          if(!selected.length){error.textContent='Choisissez au moins un emplacement compatible.';return;}
+          for(const item of selected){if(used.has(item.select.value)){error.textContent='Deux fichiers visent le même emplacement. Choisissez un autre emplacement ou ignorez l’un des fichiers.';return;}used.add(item.select.value);}
+          if(selected.some(item=>store.formats[item.select.value].imageDataUrl)&&!document.getElementById('kaptur-map-replace').checked){error.textContent='Un emplacement contient déjà un visuel. Cochez le remplacement pour continuer.';return;}
+          busy=true;apply.disabled=cancel.disabled=true;
+          try{
+            // Préparer toutes les données avant de modifier la session.
+            const prepared=await Promise.all(selected.map(async item=>({id:item.select.value,data:await fileToDataUrl(item.file)})));
+            for(const item of prepared){store.formats[item.id].imageDataUrl=item.data;store.formats[item.id].used=true;}
+            if(metadata.campaign&&!store.campaignName)store.campaignName=String(metadata.campaign);
+            store.activeFormatId=prepared[0].id;store.activeFamily=FORMATS[prepared[0].id].family;
+            saveSession();render();finish(prepared.length);
+          }catch(ex){error.textContent=ex.message||'Import impossible.';busy=false;apply.disabled=cancel.disabled=false;}
+        };
+        form.addEventListener('submit',submit);dialog.addEventListener('cancel',onCancel);dialog.addEventListener('close',onClose);cancel.addEventListener('click',onCancelClick);
+      });
     }
 
     function bindEvents() {
@@ -5694,20 +5700,30 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       });
 
       bindDropZone(els.globalUploadZone, els.globalUploadInput, files => {
-        if (files.length) handleGlobalUpload(files);
+        if (files.length) receiveKapturFiles(files).catch(error=>setStatus(error.message,'error'));
       });
 
       els.downloadBtn.addEventListener('click', exportCurrentFormat);
       els.exportCurrentBtn.addEventListener('click', exportCurrentFormat);
       els.exportAllBtn.addEventListener('click', exportAllUsedFormats);
-      els.resetSessionBtn.addEventListener('click', () => {
-        localStorage.removeItem('kaptur_v2_state');
-        location.reload();
+      els.resetSessionBtn.addEventListener('click', async () => {
+        if(!confirm('Réinitialiser la session Kaptur ? Exportez-la d’abord si vous souhaitez la conserver.'))return;
+        Object.assign(store,JSON.parse(JSON.stringify(emptySession)));applyFormatDefaults();applyRuntimeDefaults();saveSession();render();await persistSession();
       });
+      document.getElementById('kaptur-export-session').addEventListener('click',exportSessionFile);
+      document.getElementById('kaptur-import-session').addEventListener('click',()=>document.getElementById('kaptur-session-file').click());
+      document.getElementById('kaptur-session-file').addEventListener('change',event=>{importSessionFile(event.target.files[0]);event.target.value='';});
+      window.AdOpsBridge.register('kaptur',receiveKapturFiles);
+      window.AdOpsBridge.mount('kaptur-transfer',async()=>{
+        const id=store.activeFormatId,quality=Number(store.exportQuality??100),name='CAPTURE_'+replaceFileExtension(buildExportName(id),qualityPercentToExtension(quality));
+        const drawing=await renderCanvas({formatId:id,publish:false});
+        const blob=await window.AdOpsBridge.encode(drawing,qualityPercentToMimeType(quality),qualityPercentToEncoderQuality(quality));
+        return {files:[new File([blob],name,{type:blob.type})],metadata:{campaign:store.campaignName,kind:'capture'}};
+      },['renamer']);
     }
 
     async function init() {
-      loadSession();
+      await loadSession();
       applyFormatDefaults();
       applyRuntimeDefaults();
       saveSession();
@@ -5719,11 +5735,98 @@ function drawCornerPicto(ctx, picto, x, y, w, h, r) {
       }
       bindEvents();
       render();
-      setStatus('Kaptur V2 chargé. 300x600 et 728x90 pilotés par villes et dates.');
+      setStatus('Kaptur V4 prêt.');
     }
 
     init();
   </script>
 
+<script>
+/* RENOMMAGE — widget autonome intégré, identifiants cr- et portée privée. */
+(() => {
+
+'use strict';
+const $=id=>document.getElementById('cr-'+id);let entries=[];let serial=0;
+const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9]+/g,'_').replace(/^_+|_+$/g,'').toUpperCase();
+const safeBase=s=>normalize(s.replace(/\.[^.]+$/,''));
+const extension=f=>{const ext=(f.name.split('.').pop()||'').toLowerCase();return /^[a-z0-9]{2,5}$/.test(ext)?ext:'bin'};
+const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function error(message){$('alert').textContent=message;$('alert').classList.add('show');setTimeout(()=>{$('alert').classList.remove('show')},5500)}
+function previewName(e,counts,overrides=true){let sep=$('separator').value;let camp=normalize($('campaign').value)||'CAMPAGNE';let dim=`${e.w}x${e.h}`;let ver=overrides?e.version:1;let include=!$('onlyMultiple').checked||counts[dim]>1;let v=include?'V'+(Number.isFinite(ver)&&ver>=1?Math.floor(ver):1):'';let parts=$('order').value==='campaign-version-size'?[camp,v,dim]:$('order').value==='size-campaign-version'?[dim,camp,v]:[camp,dim,v];if($('preserveName').checked)parts.push(safeBase(e.file.name));return (e.capture?['CAPTURE',...parts]:parts).filter(Boolean).join(sep)+'.'+extension(e.file)}
+function allocateVersions(){let seen={};for(const e of entries){let d=e.w+'x'+e.h;seen[d]=(seen[d]||0)+1;if(!e.manual)e.version=seen[d]}}
+function currentCounts(){let counts={};for(let e of entries){let d=e.w+'x'+e.h;counts[d]=(counts[d]||0)+1}return counts}
+function uniqueNames(){let counts=currentCounts(),used=new Set(),result=[];for(let e of entries){let name=previewName(e,counts),base=name.slice(0,name.lastIndexOf('.')),ext=name.slice(name.lastIndexOf('.'));let candidate=name,n=2;while(used.has(candidate.toLowerCase()))candidate=base+'_'+n+++ext;used.add(candidate.toLowerCase());result.push(candidate)}return result}
+function update(){allocateVersions();const counts=currentCounts(),names=uniqueNames();$('count').textContent=entries.length;$('formats').textContent=Object.keys(counts).length;$('bytes').textContent=(entries.reduce((a,e)=>a+e.file.size,0)/1024/1024).toLocaleString('fr-FR',{maximumFractionDigits:2})+' Mo';for(const id of ['clear','zip','csv','all'])$(id).disabled=!entries.length;let demo={file:{name:'visuel.jpg'},w:300,h:250,version:1};$('example').textContent=previewName(demo,{'300x250':2},false);$('tbody').innerHTML=entries.length?entries.map((e,i)=>`<tr><td><img class="cr-thumb" src="${e.url}" alt="Aperçu"></td><td><div class="cr-orig">${escapeHtml(e.file.name)}</div><div class="cr-muted">${(e.file.size/1024).toLocaleString('fr-FR',{maximumFractionDigits:0})} Ko</div></td><td class="cr-dim">${e.w} × ${e.h}</td><td><input class="cr-version" aria-label="Version de ${escapeHtml(e.file.name)}" type="number" min="1" max="99999" data-version="${e.id}" value="${e.version}"></td><td class="cr-new">${escapeHtml(names[i])}</td><td><div class="cr-row-actions"><button class="cr-mini-download" title="Télécharger ce fichier renommé" data-download="${e.id}">↓ Fichier</button><button class="cr-mini-download" title="Ouvrir ce fichier dans Resize" data-resize="${e.id}" ${e.capture?'disabled':''}>Resize</button><button class="cr-remove" title="Retirer" aria-label="Retirer ${escapeHtml(e.file.name)}" data-remove="${e.id}">×</button></div></td></tr>`).join(''):'<tr><td colspan="6" class="cr-empty">Aucun fichier ajouté pour le moment.</td></tr>'}
+async function dimensions(file){let url=URL.createObjectURL(file);try{let img=new Image();await new Promise((ok,fail)=>{img.onload=ok;img.onerror=()=>fail(Error('Image illisible'));img.src=url});if(!img.naturalWidth||!img.naturalHeight)throw Error('Dimensions introuvables');return {w:img.naturalWidth,h:img.naturalHeight,url}}catch(ex){URL.revokeObjectURL(url);throw ex}}
+async function addFiles(files,metadata={}){let skipped=[];const before=entries.length;for(let file of files){if(!file.type.startsWith('image/')&&!/\.(svg|avif|png|jpe?g|gif|webp|bmp)$/i.test(file.name)){skipped.push(file.name);continue}try{let props=await dimensions(file);entries.push({id:++serial,file,...props,manual:false,version:1,capture:metadata.kind==='capture'})}catch(e){skipped.push(file.name)}}update();if(skipped.length)error('Fichier(s) ignoré(s) : '+skipped.join(', '));$('notice').textContent=entries.length?'Prêt à exporter : '+entries.length+' fichier(s).':'';return entries.length-before;}
+$('choose').onclick=e=>{e.stopPropagation();$('fileInput').click()};$('dropzone').onclick=e=>{if(e.target.id!=='cr-choose' && e.target.id!=='cr-fileInput')$('fileInput').click()};$('dropzone').onkeydown=e=>{if(e.target === $('dropzone') && (e.key==='Enter'||e.key===' ')){e.preventDefault();$('fileInput').click()}};$('fileInput').onchange=async e=>{await addFiles([...e.target.files]);e.target.value=''};
+for(let type of ['dragenter','dragover'])$('dropzone').addEventListener(type,e=>{e.preventDefault();$('dropzone').classList.add('drag')});for(let type of ['dragleave','drop'])$('dropzone').addEventListener(type,e=>{e.preventDefault();$('dropzone').classList.remove('drag')});$('dropzone').addEventListener('drop',async e=>await addFiles([...e.dataTransfer.files]));
+$('tbody').addEventListener('change',e=>{if(e.target.dataset.version){let entry=entries.find(x=>String(x.id)===e.target.dataset.version);if(entry){entry.version=Math.max(1,Math.min(99999,Number(e.target.value)||1));entry.manual=true;update()}}});$('tbody').addEventListener('click',e=>{const resizeId=e.target.closest('[data-resize]')?.dataset.resize;if(resizeId){const i=entries.findIndex(x=>String(x.id)===resizeId);if(i>=0&&!entries[i].capture)window.AdOpsBridge.send('resize',[new File([entries[i].file],uniqueNames()[i],{type:entries[i].file.type})]);return;}let fileId=e.target.closest('[data-download]')?.dataset.download;if(fileId){let n=entries.findIndex(x=>String(x.id)===fileId);if(n>=0)download(entries[n].file,uniqueNames()[n]);return}let id=e.target.dataset.remove;if(id){let n=entries.findIndex(x=>String(x.id)===id);if(n>=0){URL.revokeObjectURL(entries[n].url);entries.splice(n,1);update()}}});
+for(let id of ['campaign','separator','order','onlyMultiple','preserveName'])$(id).addEventListener(id==='campaign'?'input':'change',update);
+$('clear').onclick=()=>{for(let e of entries)URL.revokeObjectURL(e.url);entries=[];update();$('notice').textContent='Liste vidée.'};
+function download(blob,name){let u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),30000)}
+// Export direct : répertoire natif sur navigateurs compatibles, téléchargements individuels ailleurs.
+$('all').onclick=async()=>{
+  if(!entries.length)return;
+  const btn=$('all'), batch=entries.slice(), names=uniqueNames();
+  btn.disabled=true;btn.textContent='Préparation des fichiers…';
+  let savedCount=0;
+  try{
+    if(typeof window.showDirectoryPicker==='function' && window.isSecureContext){
+      let dir;
+      try { dir=await window.showDirectoryPicker({mode:'readwrite'}); }
+      catch(e){
+        if(e.name==='AbortError'){$('notice').textContent='Sélection du dossier annulée.';return;}
+        // Si le sélecteur est indisponible, proposer des téléchargements classiques.
+      }
+      if(dir){
+        let adjusted=0;
+        for(let i=0;i<batch.length;i++){
+          const original=names[i], dot=original.lastIndexOf('.');
+          let candidate=original, suffix=2;
+          // Ne jamais écraser un fichier déjà présent dans le dossier choisi.
+          while(true){
+            try { await dir.getFileHandle(candidate); }
+            catch(e){ if(e.name==='NotFoundError') break; if(e.name!=='TypeMismatchError') throw e; }
+            candidate=original.slice(0,dot)+'_'+suffix+++original.slice(dot);
+          }
+          if(candidate!==original)adjusted++;
+          const handle=await dir.getFileHandle(candidate,{create:true});
+          const writable=await handle.createWritable();
+          await writable.write(batch[i].file);await writable.close();savedCount++;
+        }
+        $('notice').textContent=savedCount+' fichier(s) enregistrés sans ZIP.'+(adjusted?' '+adjusted+' nom(s) ajusté(s) pour préserver les fichiers déjà présents.':'');
+        return;
+      }
+    }
+    for(let i=0;i<batch.length;i++){
+      download(batch[i].file,names[i]);
+      await new Promise(resolve=>setTimeout(resolve,180));
+    }
+    $('notice').textContent=batch.length+' téléchargement(s) déclenché(s), sans ZIP. Si des fichiers manquent, autorisez les téléchargements multiples ou utilisez les boutons « Fichier ».';
+  }catch(e){error('Export interrompu après '+savedCount+' fichier(s) enregistré(s) : '+e.message);}
+  finally{btn.disabled=!entries.length;btn.textContent='↓ Télécharger tous les fichiers';}
+};
+function csvCell(s){return '"'+String(s).replace(/"/g,'""')+'"'}
+$('csv').onclick=()=>{let names=uniqueNames();let rows=[['Nom original','Nom renommé','Largeur','Hauteur','Version','Taille octets'],...entries.map((e,i)=>[e.file.name,names[i],e.w,e.h,e.version,e.file.size])];download(new Blob(['\ufeff'+rows.map(r=>r.map(csvCell).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'}),(normalize($('campaign').value)||'CAMPAGNE')+'_renommage.csv')};
+// ZIP sans dépendance externe, méthode STORE : préserve chaque fichier octet pour octet.
+const crcTable=(()=>{let t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xedb88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+function crc32(data){let c=0xffffffff;for(let b of data)c=crcTable[(c^b)&255]^(c>>>8);return(c^0xffffffff)>>>0}
+function dosDate(d){let y=Math.max(1980,d.getFullYear());return {time:(d.getHours()<<11)|(d.getMinutes()<<5)|(d.getSeconds()>>1),date:((y-1980)<<9)|((d.getMonth()+1)<<5)|d.getDate()}}
+function zipParts(contents){let chunks=[],central=[],offset=0,encoder=new TextEncoder();for(let {name,buffer,date} of contents){let bytes=new Uint8Array(buffer),fn=encoder.encode(name),crc=crc32(bytes),dt=dosDate(date),local=new Uint8Array(30+fn.length),v=new DataView(local.buffer);v.setUint32(0,0x04034b50,true);v.setUint16(4,20,true);v.setUint16(6,0x800,true);v.setUint16(8,0,true);v.setUint16(10,dt.time,true);v.setUint16(12,dt.date,true);v.setUint32(14,crc,true);v.setUint32(18,bytes.length,true);v.setUint32(22,bytes.length,true);v.setUint16(26,fn.length,true);local.set(fn,30);chunks.push(local,bytes);let cent=new Uint8Array(46+fn.length),c=new DataView(cent.buffer);c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);c.setUint16(8,0x800,true);c.setUint16(10,0,true);c.setUint16(12,dt.time,true);c.setUint16(14,dt.date,true);c.setUint32(16,crc,true);c.setUint32(20,bytes.length,true);c.setUint32(24,bytes.length,true);c.setUint16(28,fn.length,true);c.setUint32(42,offset,true);cent.set(fn,46);central.push(cent);offset+=local.length+bytes.length}let centralSize=central.reduce((n,c)=>n+c.length,0);let end=new Uint8Array(22),v=new DataView(end.buffer);v.setUint32(0,0x06054b50,true);v.setUint16(8,contents.length,true);v.setUint16(10,contents.length,true);v.setUint32(12,centralSize,true);v.setUint32(16,offset,true);return new Blob([...chunks,...central,end],{type:'application/zip'})}
+$('zip').onclick=async()=>{if(!entries.length)return;const batch=entries.slice(),btn=$('zip');btn.disabled=true;btn.textContent='Préparation du ZIP…';try{if(batch.length>65535)throw Error('ZIP limité à 65 535 fichiers');let names=uniqueNames(),contents=[];for(let i=0;i<batch.length;i++){let e=batch[i];contents.push({name:names[i],buffer:await e.file.arrayBuffer(),date:new Date(e.file.lastModified||Date.now())})}let zip=zipParts(contents);download(zip,(normalize($('campaign').value)||'CAMPAGNE')+'_creas.zip');$('notice').textContent=`ZIP créé : ${batch.length} fichier(s) renommé(s) · ${(zip.size/1024/1024).toFixed(2)} Mo.`}catch(e){error('Export impossible : '+e.message)}finally{btn.disabled=!entries.length;btn.textContent='↓ ZIP (optionnel)'}};
+window.AdOpsBridge.register('renamer',async(files,metadata={})=>{
+  if(metadata.campaign&&!$('campaign').value)$('campaign').value=metadata.campaign;
+  return await addFiles(files,metadata);
+});
+window.AdOpsBridge.mount('renamer-transfer',()=>{
+  const transferable=entries.filter(entry=>!entry.capture);
+  const names=uniqueNames();
+  return {files:transferable.map((entry,index)=>new File([entry.file],names[entries.indexOf(entry)],{type:entry.file.type,lastModified:entry.file.lastModified})),metadata:{campaign:$('campaign').value}};
+},['checkpub','kaptur']);
+update();
+
+})();
+</script>
 </body>
 </html>
